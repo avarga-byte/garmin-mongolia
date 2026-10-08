@@ -172,3 +172,9 @@ Object.assign(mongolian, {
   'No articles match your search.': 'Хайлтад тохирох нийтлэл олдсонгүй.',
   'Garmin global blog': 'Garmin дэлхийн блог',
 })
+Object.assign(mongolian, {
+  'Last updated': 'Сүүлд шинэчилсэн',
+  'This policy is being prepared for Garmin Mongolia. For questions in the meantime, contact us.': 'Энэхүү бодлогыг Garmin Mongolia-д зориулан бэлтгэж байна. Асуух зүйл байвал бидэнтэй холбогдоно уу.',
+  'Modern Slavery Statement': 'Орчин үеийн боолчлолын эсрэг мэдэгдэл',
+  'Whistleblowing Scheme': 'Зөрчил мэдээлэх журам',
+})

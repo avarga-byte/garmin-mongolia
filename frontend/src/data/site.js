@@ -68,7 +68,7 @@ export const navigation = [
 ]
 
 export const footerColumns = [
-  { title: 'Customer Service', links: ['Garmin Support Centre', 'Contact Us', 'Store Locator', 'Warranty Information', 'Bulk Enquiry', 'Deals and Promotions', 'Shipping & Returns Policy', 'Partner With Us'] },
+  { title: 'Customer Service', links: ['Garmin Support Centre', 'Contact Us', 'Store Locator', 'Warranty Information', 'Bulk Enquiry', 'Deals and Promotions', 'Shipping & Returns Policy', 'Modern Slavery Statement', 'Whistleblowing Scheme', 'Partner With Us'] },
   { title: 'Company', links: ['About Us', 'Blog', 'Store Locator', "FAQ's", 'Sustainability'] },
   { title: 'Platforms', links: ['Garmin Connect', 'Garmin Express', 'Connect IQ', 'flyGarmin', 'Garmin Explore'] },
 ]
@@ -80,9 +80,11 @@ export const footerDestinations = {
   'Garmin Support Centre': 'https://support.garmin.com/',
   'Contact Us': '/contact',
   'Store Locator': 'https://www.garmin.com/en-US/dealerlocator/',
-  'Warranty Information': 'https://support.garmin.com/',
+  'Warranty Information': '/consumer-limited-warranty',
   'Bulk Enquiry': '/bulk-enquiry',
-  'Shipping & Returns Policy': 'https://support.garmin.com/',
+  'Shipping & Returns Policy': '/shipping',
+  'Modern Slavery Statement': '/modern-slavery-statement',
+  'Whistleblowing Scheme': '/whistleblowing-scheme',
   'Partner With Us': 'https://www.garmin.com/en-US/authorized-sellers/',
   'About Us': '/about-garmin',
   Sustainability: 'https://www.garmin.com/en-US/sustainability/',
@@ -93,9 +95,9 @@ export const footerDestinations = {
   flyGarmin: 'https://fly.garmin.com/',
   'Garmin Explore': 'https://explore.garmin.com/',
   'Site Map': 'https://www8.garmin.com/siteIndex.html',
-  'Terms of Use': 'https://www.garmin.com/en-US/legal/terms-of-use/',
-  Privacy: 'https://www.garmin.com/en-US/privacy/',
-  Compliance: 'https://www.garmin.com/en-US/legal/compliance/',
+  'Terms of Use': '/terms',
+  Privacy: '/privacy',
+  Compliance: '/compliance',
   Blog: '/blog',
   'Deals and Promotions': '/sales-promotions',
 }
