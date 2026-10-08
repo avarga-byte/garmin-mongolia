@@ -24,7 +24,7 @@ export default function PurchasePanel({ product }) {
       {product.kicker && <div className="product-kicker">{product.kicker.toUpperCase()}</div>}
       <h1>{product.name}</h1>
       <p className="pdp-summary">{product.description}</p>
-      {product.price && <div className="pdp-price">{product.price} <small>USD</small></div>}
+      {product.price && <div className="pdp-price">{product.price}{!product.price.startsWith('AED') && <> <small>USD</small></>}</div>}
       <div className="option-title">COLOR <b>{color.name}</b></div>
       <div className="color-options">
         {swatches.map((swatch) => (

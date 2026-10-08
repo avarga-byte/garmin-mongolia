@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CircleHelp, Menu, Search, ShoppingBag, UserRound, X } from 'lucide-react'
-import { navigation, slugify } from '../../data/site'
+import { categoryHref } from '../../data/catalog'
+import { navigation } from '../../data/site'
 import { useCart } from '../../context/CartContext'
 import AnnouncementBar from './AnnouncementBar'
 import Logo from './Logo'
@@ -25,7 +26,7 @@ export default function Header() {
           {navigation.map((item) => (
             <a
               key={item.label}
-              href={`/c/${slugify(item.label)}`}
+              href={categoryHref(item.label)}
               onMouseEnter={() => setOpenItem(item)}
               onFocus={() => setOpenItem(item)}
               className={`flex items-center border-b-2 px-3 font-display text-[13px] uppercase tracking-wide ${openItem === item ? 'border-black' : 'border-transparent'}`}

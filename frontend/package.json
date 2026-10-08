@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "server": "node server.js",
-    "backend": "node ../backend/server.js"
+    "backend": "node ../backend/server.js",
+    "import:catalog": "node scripts/import-catalog.mjs"
   },
   "dependencies": {
     "express": "^5.2.1",

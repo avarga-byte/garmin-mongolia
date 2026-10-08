@@ -1,4 +1,4 @@
-import { slugify } from '../../data/site'
+import { categoryHref } from '../../data/catalog'
 
 // Dropdown panel under a top-level nav item: link columns plus a promo card.
 export default function MegaMenu({ item }) {
@@ -11,7 +11,7 @@ export default function MegaMenu({ item }) {
               <h3 className="mb-3 border-b border-neutral-300 pb-2 font-display text-sm uppercase">{column.title}</h3>
               <ul className="space-y-2">
                 {column.links.map((link) => (
-                  <li key={link}><a href={`/c/${slugify(link)}`} className="text-[13px] hover:underline">{link}</a></li>
+                  <li key={link}><a href={categoryHref(link)} className="text-[13px] hover:underline">{link}</a></li>
                 ))}
               </ul>
             </div>

@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react'
-import { navigation, slugify } from '../../data/site'
+import { categoryHref } from '../../data/catalog'
+import { navigation } from '../../data/site'
 
 export default function MobileMenu() {
   return (
@@ -13,7 +14,7 @@ export default function MobileMenu() {
           {item.columns.map((column) => (
             <div key={column.title} className="pb-3 pl-3">
               <p className="mb-1 font-display text-xs uppercase text-neutral-500">{column.title}</p>
-              {column.links.map((link) => <a key={link} href={`/c/${slugify(link)}`} className="block py-1 text-sm">{link}</a>)}
+              {column.links.map((link) => <a key={link} href={categoryHref(link)} className="block py-1 text-sm">{link}</a>)}
             </div>
           ))}
         </details>
