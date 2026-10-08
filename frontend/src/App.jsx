@@ -2,10 +2,15 @@ import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import Newsletter from './components/layout/Newsletter'
 import { CartProvider } from './context/CartContext'
+import { WishlistProvider } from './context/WishlistContext'
 import { LocaleProvider } from './context/LocaleContext'
 import { legalPages } from './data/legal'
 import { findProduct, findProductBySku } from './data/products'
 import AboutPage from './pages/AboutPage'
+import LoginPage from './pages/account/LoginPage'
+import { ForgotPasswordPage, ResetPasswordPage } from './pages/account/PasswordPages'
+import RegisterPage from './pages/account/RegisterPage'
+import WishlistPage from './pages/account/WishlistPage'
 import BlogPage from './pages/BlogPage'
 import BulkEnquiryPage from './pages/BulkEnquiryPage'
 import CareerPage from './pages/CareerPage'
@@ -32,6 +37,10 @@ const pages = {
   'bulk-enquiry': BulkEnquiryPage,
   career: CareerPage,
   blog: BlogPage,
+  login: LoginPage,
+  register: RegisterPage,
+  'forgot-password': ForgotPasswordPage,
+  'reset-password': ResetPasswordPage,
 }
 
 // Minimal path-based routing: "/" is home, "/p/:id" (or legacy "/products/:id") is a product page.
@@ -41,6 +50,7 @@ function route(pathname) {
   if (!section || section === 'index.html') return <HomePage />
   const Page = !id && pages[section]
   if (Page) return <Page />
+  if (section === 'account') return id === 'wishlist' ? <WishlistPage /> : <LoginPage accountRequired />
   if (!id && legalPages[section]) return <LegalPage key={section} page={legalPages[section]} />
   if (section === 'c' && id) return <CategoryPage slug={id} />
   if ((section === 'p' || section === 'products') && id) {
@@ -54,12 +64,14 @@ export default function App() {
   return (
     <LocaleProvider>
       <CartProvider>
-        <div className="min-h-screen bg-white font-sans text-black">
-          <Header />
-          {route(window.location.pathname)}
-          <Newsletter />
-          <Footer />
-        </div>
+        <WishlistProvider>
+          <div className="min-h-screen bg-white font-sans text-black">
+            <Header />
+            {route(window.location.pathname)}
+            <Newsletter />
+            <Footer />
+          </div>
+        </WishlistProvider>
       </CartProvider>
     </LocaleProvider>
   )
