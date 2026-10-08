@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { RotateCcw, ShieldCheck, ShoppingBag, Truck } from 'lucide-react'
+import { Heart, RotateCcw, ShieldCheck, ShoppingBag, Truck } from 'lucide-react'
 import { useLocale } from '../../context/locale'
 import { useCart } from '../../context/CartContext'
+import { useWishlist } from '../../context/WishlistContext'
 
 const benefits = [
   { Icon: Truck, text: 'Ask us about delivery' },
@@ -17,6 +18,8 @@ const initialOptions = (product) => product.variants?.find(({ sku }) => sku === 
 export default function PurchasePanel({ product, onVariantChange }) {
   const { t } = useLocale()
   const { add } = useCart()
+  const wishlist = useWishlist()
+  const saved = wishlist.has(product.id)
   const [added, setAdded] = useState(false)
   const groups = product.variantGroups || []
   const [selected, setSelected] = useState(() => initialOptions(product))
@@ -62,6 +65,9 @@ export default function PurchasePanel({ product, onVariantChange }) {
       ))}
       <button type="button" className="add-cart" disabled={variants.length > 0 && !selectedVariant} onClick={() => { add({ productId: product.id, sku: selectedVariant?.sku || product.sku, name: product.name, variants: selected }); setAdded(true) }}>
         {added ? t('ADDED TO CART') : t('ADD TO CART')} <ShoppingBag size={18} />
+      </button>
+      <button type="button" onClick={() => wishlist.toggle({ productId: product.id, sku: selectedVariant?.sku || product.sku })} aria-pressed={saved} className="mt-3 inline-flex items-center gap-2 text-sm text-sky-600 hover:underline">
+        <Heart size={16} fill={saved ? 'currentColor' : 'none'} /> {saved ? t('Saved to wishlist') : t('Add to wishlist')}
       </button>
       <div className="availability">{t('In stock · Ships in 1–3 days')}</div>
       <div className="purchase-benefits">

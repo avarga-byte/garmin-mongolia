@@ -39,7 +39,7 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
           <a href="https://support.garmin.com/" target="_blank" rel="noreferrer" className="hidden items-center gap-1 text-xs md:flex"><CircleHelp size={16} /> {t('Support')}</a>
           <a href="/search" className={iconButton} aria-label={t('Search')}><Search size={18} /></a>
-          <button type="button" className={iconButton} aria-label={t('Account')}><UserRound size={18} /></button>
+          <a href="/login" className={iconButton} aria-label={t('Account')}><UserRound size={18} /></a>
           <a href="/cart" className={`${iconButton} relative`} aria-label={t('Cart')}>
             <ShoppingBag size={18} />
             <span className="absolute -right-1 -top-1 grid size-4 place-items-center rounded-full bg-black text-[9px] text-white">{count}</span>
