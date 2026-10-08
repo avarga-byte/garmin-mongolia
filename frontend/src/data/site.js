@@ -76,17 +76,17 @@ export const footerColumns = [
 export const legalLinks = ['Site Map', 'Terms of Use', 'Privacy', 'Compliance']
 
 export const footerDestinations = {
-  "FAQ's": 'https://support.garmin.com/',
+  "FAQ's": '/faq',
   'Garmin Support Centre': 'https://support.garmin.com/',
-  'Contact Us': 'https://support.garmin.com/en-US/contactsupport/',
+  'Contact Us': '/contact',
   'Store Locator': 'https://www.garmin.com/en-US/dealerlocator/',
   'Warranty Information': 'https://support.garmin.com/',
-  'Bulk Enquiry': 'https://support.garmin.com/en-US/contactsupport/',
+  'Bulk Enquiry': '/bulk-enquiry',
   'Shipping & Returns Policy': 'https://support.garmin.com/',
   'Partner With Us': 'https://www.garmin.com/en-US/authorized-sellers/',
-  'About Us': 'https://www.garmin.com/en-XD/company/about-garmin/',
+  'About Us': '/about-garmin',
   Sustainability: 'https://www.garmin.com/en-US/sustainability/',
-  Company: 'https://www.garmin.com/en-XD/company/about-garmin/',
+  Company: '/about-garmin',
   'Garmin Connect': 'https://connect.garmin.com/',
   'Garmin Express': 'https://www.garmin.com/en-US/software/express/',
   'Connect IQ': 'https://apps.garmin.com/en-US',
@@ -96,8 +96,10 @@ export const footerDestinations = {
   'Terms of Use': 'https://www.garmin.com/en-US/legal/terms-of-use/',
   Privacy: 'https://www.garmin.com/en-US/privacy/',
   Compliance: 'https://www.garmin.com/en-US/legal/compliance/',
-  Blog: 'https://www.garmin.com/en-US/blog/',
-  'Deals and Promotions': 'https://www.garmin.com/en-US/c/sale/',
+  Blog: '/blog',
+  'Deals and Promotions': '/sales-promotions',
 }
+
+export const promotions = []
 
 export const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')

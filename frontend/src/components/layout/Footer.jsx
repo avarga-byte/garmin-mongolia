@@ -1,6 +1,8 @@
 import { footerColumns, footerDestinations, legalLinks, slugify } from '../../data/site'
 import { useLocale } from '../../context/locale'
 
+const linkProps = (href) => (/^https?:/.test(href) ? { href, target: '_blank', rel: 'noreferrer' } : { href })
+
 const socials = [
   { label: 'Facebook', short: 'f', href: 'https://www.facebook.com/Garmin/' },
   { label: 'YouTube', short: '▶', href: 'https://www.youtube.com/garmin' },
@@ -17,7 +19,7 @@ export default function Footer() {
           <div key={t(column.title)}>
             <h3 className="mb-3 font-display text-base uppercase">{t(column.title)}</h3>
             <ul className="space-y-1.5">
-              {column.links.map((link) => <li key={link}><a href={footerDestinations[link] || `/${slugify(link)}`} target={footerDestinations[link] ? '_blank' : undefined} rel={footerDestinations[link] ? 'noreferrer' : undefined} className="text-[12.8px] hover:underline">{t(link)}</a></li>)}
+              {column.links.map((link) => <li key={link}><a {...linkProps(footerDestinations[link] || `/${slugify(link)}`)} className="text-[12.8px] hover:underline">{t(link)}</a></li>)}
             </ul>
           </div>
         ))}
@@ -38,7 +40,7 @@ export default function Footer() {
       <div className="mt-6 flex flex-wrap justify-between gap-4 border-t border-white pt-4 text-xs">
         <p>{t('Copyright © Garmin storefront demo')}</p>
         <ul className="flex flex-wrap gap-6">
-          {legalLinks.map((link) => <li key={link}><a href={footerDestinations[link] || `/${slugify(link)}`} target={footerDestinations[link] ? '_blank' : undefined} rel={footerDestinations[link] ? 'noreferrer' : undefined} className="hover:underline">{t(link)}</a></li>)}
+          {legalLinks.map((link) => <li key={link}><a {...linkProps(footerDestinations[link] || `/${slugify(link)}`)} className="hover:underline">{t(link)}</a></li>)}
         </ul>
       </div>
     </footer>

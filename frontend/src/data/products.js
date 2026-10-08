@@ -89,4 +89,8 @@ export const findProductBySku = (sku) => {
 }
 export const productPath = (product) => `/p/${product.sku || detailedProducts.find(({ id }) => id === product.id)?.sku || product.id}`
 
+export const comparePath = (ids) => `/compare?products=${ids.map(encodeURIComponent).join(',')}`
+
+export const allProducts = () => [...new Set([...detailedProducts, ...featuredProducts].map(({ id }) => id))].map(findProduct)
+
 export const relatedProducts = (id) => detailedProducts.filter((product) => product.id !== id).map((product) => ({ ...product, href: productPath(product) }))
