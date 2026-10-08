@@ -15,11 +15,11 @@ export const about = {
   intro: {
     en: [
       'Garmin builds GPS navigation and wearable technology for people who would rather be out training, exploring and travelling than sitting still.',
-      'Since 1989 the company has grown to more than 19,000 associates in offices around the world, making products for fitness, outdoor, automotive, aviation and marine customers.',
+      'Since 1989 the company has grown to more than 19,000 associates in offices around the world, making products for fitness, outdoor and adventure customers.',
     ],
     mn: [
       'Garmin нь бэлтгэл хийх, аялах, байгальд гарах дуртай хүмүүст зориулсан GPS навигаци болон ухаалаг цаг, бугуйвч бүтээдэг.',
-      '1989 онд байгуулагдсан тус компани өнөөдөр дэлхийн олон оронд 19,000 гаруй ажилтантай бөгөөд фитнес, аялал, автомашин, нисэх болон усан тээврийн чиглэлээр бүтээгдэхүүн үйлдвэрлэдэг.',
+      '1989 онд байгуулагдсан тус компани өнөөдөр дэлхийн олон оронд 19,000 гаруй ажилтантай бөгөөд фитнес, аялал, адал явдлын чиглэлээр бүтээгдэхүүн үйлдвэрлэдэг.',
     ],
   },
   principles: [
@@ -86,10 +86,8 @@ export const blog = {
   empty: { en: 'No articles have been published yet. Read the latest stories on the Garmin global blog.', mn: 'Одоогоор нийтлэл гараагүй байна. Хамгийн сүүлийн мэдээг Garmin-ийн дэлхийн блогоос уншаарай.' },
   globalBlog: 'https://www.garmin.com/en-US/blog/',
   categories: [
-    { id: 'automotive', label: { en: 'Automotive', mn: 'Автомашин' } },
     { id: 'cycling', label: { en: 'Cycling', mn: 'Дугуй' } },
     { id: 'health', label: { en: 'Health', mn: 'Эрүүл мэнд' } },
-    { id: 'marine', label: { en: 'Marine', mn: 'Усан тээвэр' } },
     { id: 'outdoor', label: { en: 'Outdoor recreation', mn: 'Аялал' } },
     { id: 'running', label: { en: 'Running', mn: 'Гүйлт' } },
   ],

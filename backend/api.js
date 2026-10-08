@@ -3,9 +3,9 @@ import express from 'express'
 const router = express.Router()
 const locales = ['en', 'mn']
 const fenix9Skus = '010-04761-10 010-04762-00 010-04762-10 010-04763-00 010-04763-10 010-04335-15 010-04335-25 010-04335-05 010-04335-85 010-04336-25 010-04336-05 010-04336-15 010-04337-15 010-04337-05 010-04337-25 010-04338-05 010-04339-05 010-04335-10 010-04335-00 010-04335-20 010-04335-40 010-04335-80 010-04336-00 010-04336-10 010-04336-20 010-04336-40 010-04337-00 010-04337-10 010-04337-20 010-04337-40 010-04338-00 010-04339-00'.split(' ')
-const productIds = ['enduro-4', 'fenix-9', 'cirqa', 'approach-s72', 'fenix-9-pro', 'approach-z10', 'livescope-2', 'forerunner-170', 'descent-mk3i', 'catalyst-r1', 'instinct-3-alpine', 'tactix-8', 'varia-820', 'approach-j1', 'approach-g82', 'xero-l60i', 'venu-x1', 'quatix-8-pro', 'd2-mach-2-pro']
+const productIds = ['enduro-4', 'fenix-9', 'cirqa', 'approach-s72', 'fenix-9-pro', 'approach-z10', 'forerunner-170', 'descent-mk3i', 'instinct-3-alpine', 'tactix-8', 'varia-820', 'approach-j1', 'approach-g82', 'xero-l60i', 'venu-x1']
 const skus = { '010-04799-00': 'enduro-4', '010-04761-00': 'fenix-9', ...Object.fromEntries(fenix9Skus.map((sku) => [sku, 'fenix-9'])), '010-04337-00': 'fenix-9', '010-04675-00': 'cirqa', '010-04148-00': 'approach-s72' }
-const categories = ['smartwatches', 'sports-fitness', 'outdoor-recreation', 'automotive', 'marine', 'aviation']
+const categories = ['smartwatches', 'sports-fitness', 'outdoor-recreation']
 
 // Contract mirrors Geoshop's Prisma GarminProduct + Image + Specification records.
 // Public reads must be projected by the authenticated Geoshop adapter; never accept
