@@ -6,7 +6,7 @@ import { useLocale } from '../context/locale'
 import './category.css'
 
 const aliases = { 'wearables-smartwatches': 'smartwatches', 'sports-and-fitness': 'sports-fitness' }
-const activities = ['Boating', 'Cycling', 'Diving', 'Driving', 'Flying', 'Golfing', 'Hiking', 'Running', 'Strength', 'Swimming']
+const activities = ['Cycling', 'Diving', 'Golfing', 'Hiking', 'Running', 'Strength', 'Swimming']
 const seriesTiles = [
   { id: 'fenix-instinct', name: 'fēnix® & Instinct®', copy: 'Rugged outdoor smartwatches built for adventure.', imageIds: ['fenix-9', 'instinct-3-alpine'] },
   { id: 'venu-vivoactive', name: 'Venu® & vívoactive®', copy: 'Health- and fitness-focused smartwatches.', imageId: 'venu-x1' },

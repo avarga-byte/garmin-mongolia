@@ -39,38 +39,12 @@ export const navigation = [
     ],
     promo: { title: 'INSTINCT® 3', copy: 'Rugged watches in limited colours', image: media('Instinct-3-Alpine-Rush-Collection.webp'), href: '/p/instinct-3-alpine' },
   },
-  {
-    label: 'Automotive',
-    columns: [
-      { title: 'Products', links: ['Dash Cams', 'Car Navigators', 'Motorcycle Navigators', 'Truck Navigators', 'Racing Radar'] },
-      { title: 'Maps', links: ['Map Updates'] },
-      { title: 'Accessories', links: ['Automotive Accessories'] },
-    ],
-    promo: { title: 'GARMIN CATALYST™ R1', copy: 'Radar for the race track', image: media('GARMIN CATALYSTâ¢ R1.webp'), href: '/p/catalyst-r1' },
-  },
-  {
-    label: 'Marine',
-    columns: [
-      { title: 'Products', links: ['Chartplotters', 'Fishfinders', 'Live Sonar', 'Marine Smartwatches', 'Trolling Motors', 'Autopilots', 'Radar'] },
-      { title: 'Maps', links: ['Marine Charts'] },
-      { title: 'Accessories', links: ['Marine Accessories'] },
-    ],
-    promo: { title: 'LIVESCOPE™ 2 HD', copy: 'Clearer live sonar on the water', image: media('image - 2026-07-14T104349.806.webp'), href: '/p/livescope-2' },
-  },
-  {
-    label: 'Aviation',
-    columns: [
-      { title: 'Products', links: ['Aviator Smartwatches', 'Portable GPS', 'Avionics', 'Headsets'] },
-      { title: 'Apps & Services', links: ['flyGarmin', 'Garmin Pilot'] },
-    ],
-    promo: { title: 'D2™ MACH 2 PRO', copy: 'A smartwatch built for pilots', image: media('85088-3-M.webp'), href: '/p/d2-mach-2-pro' },
-  },
 ]
 
 export const footerColumns = [
   { title: 'Customer Service', links: ['Garmin Support Centre', 'Contact Us', 'Store Locator', 'Warranty Information', 'Bulk Enquiry', 'Deals and Promotions', 'Shipping & Returns Policy', 'Modern Slavery Statement', 'Whistleblowing Scheme', 'Partner With Us'] },
   { title: 'Company', links: ['About Us', 'Blog', 'Store Locator', "FAQ's", 'Sustainability'] },
-  { title: 'Platforms', links: ['Garmin Connect', 'Garmin Express', 'Connect IQ', 'flyGarmin', 'Garmin Explore'] },
+  { title: 'Platforms', links: ['Garmin Connect', 'Garmin Express', 'Connect IQ', 'Garmin Explore'] },
 ]
 
 export const legalLinks = ['Site Map', 'Terms of Use', 'Privacy', 'Compliance']
@@ -92,7 +66,6 @@ export const footerDestinations = {
   'Garmin Connect': 'https://connect.garmin.com/',
   'Garmin Express': 'https://www.garmin.com/en-US/software/express/',
   'Connect IQ': 'https://apps.garmin.com/en-US',
-  flyGarmin: 'https://fly.garmin.com/',
   'Garmin Explore': 'https://explore.garmin.com/',
   'Site Map': 'https://www8.garmin.com/siteIndex.html',
   'Terms of Use': '/terms',

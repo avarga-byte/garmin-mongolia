@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import { Bike, Car, Footprints, HeartPulse, Mountain, Search, Ship } from 'lucide-react'
+import { Bike, Footprints, HeartPulse, Mountain, Search } from 'lucide-react'
 import { useLocale } from '../context/locale'
 import { blog, blogPosts, localized } from '../data/pages'
 
-const icons = { automotive: Car, cycling: Bike, health: HeartPulse, marine: Ship, outdoor: Mountain, running: Footprints }
+const icons = { cycling: Bike, health: HeartPulse, outdoor: Mountain, running: Footprints }
 
 export default function BlogPage() {
   const { locale, t } = useLocale()
@@ -22,7 +22,7 @@ export default function BlogPage() {
     <main className="pb-16">
       <h1 className="pt-6 text-center font-display text-sm uppercase tracking-wide">{l(blog.title)}</h1>
       <nav aria-label={t('Blog categories')} className="mt-6 bg-neutral-100 px-4 py-6">
-        <ul className="mx-auto grid max-w-4xl grid-cols-3 gap-4 md:grid-cols-6">
+        <ul className="mx-auto grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
           {blog.categories.map(({ id, label }) => {
             const Icon = icons[id]
             const active = category === id
