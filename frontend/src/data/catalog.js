@@ -7,5 +7,3 @@ export const findCategory = (slug) => catalog.categories.find((category) => cate
 export const categoryProducts = (category) => category.products.map((sku) => catalog.products[sku])
 
 export const findCatalogProduct = (sku) => catalog.products[sku] ?? null
-
-export const formatPrice = (amount) => `AED ${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`

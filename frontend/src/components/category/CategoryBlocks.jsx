@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Play } from 'lucide-react'
 import { series } from '../../data/catalog'
+import { useLocale } from '../../context/locale'
 import { linkProps } from '../../data/site'
 import FeaturedCarousel from '../home/FeaturedCarousel'
 import ShopButton from '../ui/ShopButton'
@@ -16,16 +17,17 @@ export function Banner({ image, mobileImage }) {
 }
 
 function Video({ image, video }) {
+  const { t } = useLocale()
   const [playing, setPlaying] = useState(false)
   if (playing) {
     return (
       <div className="aspect-video w-full bg-black">
-        <iframe src={`${video}?autoplay=1`} title="Category video" allow="autoplay; encrypted-media; fullscreen" allowFullScreen className="size-full" />
+        <iframe src={`${video}?autoplay=1`} title={t('Category video')} allow="autoplay; encrypted-media; fullscreen" allowFullScreen className="size-full" />
       </div>
     )
   }
   return (
-    <button type="button" onClick={() => setPlaying(true)} className="group relative block w-full" aria-label="Play video">
+    <button type="button" onClick={() => setPlaying(true)} className="group relative block w-full" aria-label={t('Play video')}>
       <img src={image} alt="" className="max-h-[560px] w-full object-cover" />
       <span className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-black transition group-hover:scale-110"><Play size={28} fill="currentColor" /></span>
     </button>

@@ -5,8 +5,10 @@ import TileGrid from '../components/home/TileGrid'
 import WideBanner from '../components/home/WideBanner'
 import SectionHeading from '../components/ui/SectionHeading'
 import { categories, cyclingBanner, featuredProducts, heroSlides, kidsBanner, lifestyleTiles, promoCardsBottom, promoCardsTop } from '../data/home'
+import { useLocale } from '../context/locale'
 
 export default function HomePage() {
+  const { t } = useLocale()
   return (
     <main>
       <HeroCarousel slides={heroSlides} />
@@ -17,7 +19,7 @@ export default function HomePage() {
       <PromoCardGrid cards={promoCardsBottom} />
       <WideBanner {...kidsBanner} />
       <section className="px-2 py-5 md:px-4">
-        <SectionHeading>Shop by category</SectionHeading>
+        <SectionHeading>{t('Shop by category')}</SectionHeading>
         <TileGrid tiles={categories} />
       </section>
     </main>

@@ -1,11 +1,14 @@
 // Shared site-wide content: header navigation, top bar and footer.
-// Copy is written for this project; images are referenced by URL from the Garmin UAE CDN.
+// Shared Garmin storefront content and global product imagery.
 
 const MEDIA = 'https://staginggarmin.garmin.ae/media'
 
 export const media = (file) => `${MEDIA}/${encodeURI(file)}`
 
-export const announcement = 'Free delivery on orders above AED 300 | Easy payment plans available*'
+export const announcement = 'МОНГОЛ УЛС · ТӨГРӨГ (₮) · ХҮРГЭЛТ, ТӨЛБӨРИЙН НӨХЦӨЛИЙГ ЛАВЛАНА УУ'
+
+
+export const announcements = { mn: announcement, en: 'Garmin GPS devices and wearables' }
 
 const GARMIN_UK = 'https://www.garmin.com/en-GB'
 const subscriptionPlans = ['Subscription Plans', `${GARMIN_UK}/c/subscription-plans/`]

@@ -1,4 +1,7 @@
+import { useLocale } from '../../context/locale'
+
 export default function FilterSidebar({ groups, selected, onToggle, onClear }) {
+  const { t } = useLocale()
   const active = groups.some((group) => selected[group.key].length > 0)
 
   return (
@@ -21,7 +24,7 @@ export default function FilterSidebar({ groups, selected, onToggle, onClear }) {
       ))}
       {active && (
         <div className="pt-4">
-          <button type="button" onClick={onClear} className="text-xs underline">Clear all filters</button>
+          <button type="button" onClick={onClear} className="text-xs underline">{t('Clear all filters')}</button>
         </div>
       )}
     </div>
