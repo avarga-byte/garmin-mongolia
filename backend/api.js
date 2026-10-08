@@ -7,6 +7,36 @@ const productIds = ['enduro-4', 'fenix-9', 'cirqa', 'approach-s72', 'fenix-9-pro
 const skus = { '010-04799-00': 'enduro-4', '010-04761-00': 'fenix-9', ...Object.fromEntries(fenix9Skus.map((sku) => [sku, 'fenix-9'])), '010-04337-00': 'fenix-9', '010-04675-00': 'cirqa', '010-04148-00': 'approach-s72' }
 const categories = ['smartwatches', 'sports-fitness', 'outdoor-recreation', 'automotive', 'marine', 'aviation']
 
+// Contract mirrors Geoshop's Prisma GarminProduct + Image + Specification records.
+// Public reads must be projected by the authenticated Geoshop adapter; never accept
+// stock or price writes from this storefront.
+const productSchema = {
+  id: 'string', sku: 'part number string', upc: 'string|null', slug: 'string', name: 'string',
+  summary: 'string', description: 'string', images: [{ url: 'string', alt: 'string', sortOrder: 'number' }],
+  price: { amount: 'number', currency: 'MNT' }, availability: { inStock: 'boolean', quantity: 'number' },
+  variantGroups: [{ id: 'string', label: 'string', options: [{ value: 'string', label: 'string' }] }],
+  variants: [{ sku: 'part number string', upc: 'string|null', options: 'object keyed by group id', images: ['image'] }],
+  specifications: [{ title: 'string', rows: [['label', 'value']] }],
+  inTheBox: ['string'], maps: ['object'], accessories: ['object'], compatibleDevices: ['object'],
+  frequentlyBoughtTogether: ['object'], supportResources: { manual: 'url|null', software: 'url|null', support: 'url|null' },
+}
+
+router.get('/integration', (_req, res) => res.json({
+  source: 'geoshop.mn', publicBasePath: '/api/garmins', adminBasePath: '/api/admin/garmin',
+  state: 'adapter-required', productSchema,
+  endpoints: {
+    products: 'GET /api/garmins?type=&series=&featured=&isVisible=true',
+    product: 'GET /api/garmins/garmin?id={productId}',
+    adminProducts: 'GET /api/admin/garmin/products (admin session)',
+    create: 'POST /api/garmins (admin session)',
+    update: 'PATCH /api/garmins/garmin?id={productId} (admin session)',
+    images: 'POST /api/auth/cloudinary-sign then upload to Cloudinary; save returned image on product',
+    linkUpc: 'POST /api/admin/garmin/upc {upc,partNumber} (finance/admin session)',
+  },
+  identifiers: { sku: 'Garmin partNumber', upc: 'package barcode attached to one GarminProduct partNumber; variants are separate products' },
+  commerce: 'price, availability, cart quote, and orders need a Geoshop-owned server-side adapter',
+}))
+
 router.get('/health', (_req, res) => res.json({ ok: true }))
 router.get('/config', (req, res) => {
   const country = req.get('cf-ipcountry') || req.get('x-country-code') || (process.env.NODE_ENV !== 'production' ? req.query.country : null) || null
@@ -14,7 +44,7 @@ router.get('/config', (req, res) => {
 })
 router.get('/products', (req, res) => {
   const locale = locales.includes(req.query.locale) ? req.query.locale : 'en'
-  res.json({ locale, items: productIds.map((id) => ({ id, href: `/p/${id}` })) })
+  res.json({ locale, source: 'local-catalog-preview', integration: '/api/v1/integration', items: productIds.map((id) => ({ id, href: `/p/${id}` })) })
 })
 router.get('/products/:id', (req, res) => {
   const id = skus[req.params.id] || req.params.id
