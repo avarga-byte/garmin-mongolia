@@ -9,9 +9,11 @@ const sizes = {
 }
 
 export default function ShopButton({ href, children = 'Одоо үзэх', variant = 'light', size = 'md', className = '' }) {
+  const { t } = useLocale()
   return (
     <a href={href} className={`inline-flex shrink-0 items-center justify-center uppercase tracking-wide transition-colors ${variants[variant]} ${sizes[size]} ${className}`}>
-      {children}
+      {children === 'Одоо үзэх' ? t('Shop now') : t(children)}
     </a>
   )
 }
+import { useLocale } from '../../context/locale'

@@ -1,12 +1,13 @@
-import { mn } from '../../data/site'
+import { useLocale } from '../../context/locale'
 import { ArrowRight } from 'lucide-react'
 
 export function Breadcrumbs({ trail }) {
+  const { t } = useLocale()
   return (
     <div className="breadcrumbs">
       {trail.map(({ label, href }, index) => index === trail.length - 1
-        ? <b key={label}>{label}</b>
-        : <span key={label} className="contents"><a href={href}>{mn(label === 'Home' ? 'Нүүр' : label === 'Products' ? 'Бүтээгдэхүүн' : label)}</a><span>/</span></span>)}
+        ? <b key={label}>{t(label)}</b>
+        : <span key={label} className="contents"><a href={href}>{t(label)}</a><span>/</span></span>)}
     </div>
   )
 }
@@ -16,20 +17,21 @@ export function SectionTabs({ tabs }) {
 }
 
 export function ProductOverview({ product }) {
+  const { t } = useLocale()
   const cards = [
-    product.battery && [product.battery, 'Батерейн ажиллах хугацаа'],
-    product.highlight && [product.highlight, 'Таны идэвхтэй амьдралд'],
-    product.water && [product.water, 'Усны хамгаалалт'],
+    product.battery && [t(product.battery), 'Battery life'],
+    product.highlight && [product.highlight, 'Made for your activities'],
+    product.water && [t(product.water), 'Water rating'],
   ].filter(Boolean)
 
   return (
     <section id="overview" className="pdp-overview">
-      <div className="eyebrow dark">БҮТЭЭГДЭХҮҮНИЙ ТУХАЙ</div>
+      <div className="eyebrow dark">{t('PRODUCT OVERVIEW')}</div>
       <h2>{product.name}</h2>
-      <p>{product.description}</p>
+      <p>{t(product.description)}</p>
       {cards.length > 0 && (
         <div className="spec-cards">
-          {cards.map(([value, label]) => <article key={label}><b>{value.toUpperCase()}</b><span>{label}</span></article>)}
+          {cards.map(([value, label]) => <article key={label}><b>{value.toUpperCase()}</b><span>{t(label)}</span></article>)}
         </div>
       )}
     </section>
@@ -37,12 +39,13 @@ export function ProductOverview({ product }) {
 }
 
 export function FeatureStories({ stories }) {
+  const { t } = useLocale()
   if (!stories.length) return null
   return (
     <section className="feature-stories" id="features">
       {stories.map(({ image, title, copy }) => (
         <article key={title} className="feature-story" style={{ backgroundImage: `linear-gradient(90deg,rgba(0,0,0,.58),transparent 80%),url(${image})` }}>
-          <div><h2>{title}</h2><p>{copy}</p></div>
+          <div><h2>{t(title)}</h2><p>{t(copy)}</p></div>
         </article>
       ))}
     </section>
@@ -50,16 +53,17 @@ export function FeatureStories({ stories }) {
 }
 
 export function SpecificationList({ name, groups }) {
+  const { t } = useLocale()
   if (!groups.length) return null
   return (
     <section className="full-specs" id="specifications">
-      <div className="eyebrow dark">БҮТЭЭГДЭХҮҮНИЙ МЭДЭЭЛЭЛ</div>
-      <h2>Үзүүлэлт</h2>
-      <p className="spec-intro">{name}-ийн онцлог, техникийн үзүүлэлт болон нийцлийн мэдээлэл.</p>
+      <div className="eyebrow dark">{t('PRODUCT INFORMATION')}</div>
+      <h2>{t('Specifications')}</h2>
+      <p className="spec-intro">{t('Explore features, technical details and compatibility information for')} {name}.</p>
       {groups.map((group, index) => (
         <details className="spec-group" key={group.title} open={index === 0}>
-          <summary>{mn(group.title)}<span>{group.rows.length} үзүүлэлт</span></summary>
-          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{mn(label)}</th><td>{mn(value)}</td></tr>)}</tbody></table>
+          <summary>{t(group.title)}<span>{group.rows.length} {t('details')}</span></summary>
+          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{t(label)}</th><td>{t(value)}</td></tr>)}</tbody></table>
         </details>
       ))}
     </section>
@@ -67,34 +71,36 @@ export function SpecificationList({ name, groups }) {
 }
 
 export function SupportResources({ product }) {
+  const { t } = useLocale()
   if (!product.sku) return null
-  const links = [['manuals', 'Хэрэглэгчийн заавар'], ['software', 'Программ, шинэчлэл'], ['topics', 'Бүтээгдэхүүний тусламж']]
+  const links = [['manuals', 'Owner’s manual'], ['software', 'Software and updates'], ['topics', 'Product support']]
   return (
     <section className="support-resources">
       <div>
-        <div className="eyebrow dark">ТУСЛАМЖ ХЭРЭГТЭЙ ЮУ?</div>
-        <h2>Тусламж, материал</h2>
-        <p>{product.name}-ийн заавар, программын шинэчлэл болон тусламж.</p>
+        <div className="eyebrow dark">{t('NEED A HAND?')}</div>
+        <h2>{t('Support and resources')}</h2>
+        <p>{t('Get manuals, software updates and help for')} {product.name}.</p>
       </div>
       <div>
-        {links.map(([tab, label]) => <a key={tab} href={`https://support.garmin.com/?tab=${tab}&partNumber=${product.sku}`}>{label} <ArrowRight /></a>)}
+        {links.map(([tab, label]) => <a key={tab} href={`https://support.garmin.com/?tab=${tab}&partNumber=${product.sku}`}>{t(label)} <ArrowRight /></a>)}
       </div>
     </section>
   )
 }
 
 export function RelatedProducts({ products }) {
+  const { t } = useLocale()
   return (
     <section className="related-products">
-      <div className="eyebrow dark">ЦААШ ҮЗЭХ</div>
-      <h2>Танд таалагдаж магадгүй</h2>
+      <div className="eyebrow dark">{t('KEEP EXPLORING')}</div>
+      <h2>{t('You may also like')}</h2>
       <div className="related-grid">
         {products.map((item) => (
           <a className="related-card" href={item.href} key={item.id}>
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>
-            <span>{item.priceLabel || item.price || 'Үнэ лавлах'}</span>
-            <b>БҮТЭЭГДЭХҮҮН ҮЗЭХ <ArrowRight /></b>
+            <span>{item.priceLabel || item.price || t('Contact for price')}</span>
+            <b>{t('VIEW PRODUCT')} <ArrowRight /></b>
           </a>
         ))}
       </div>
@@ -103,10 +109,11 @@ export function RelatedProducts({ products }) {
 }
 
 export function BoxContents({ name }) {
+  const { t } = useLocale()
   return (
     <section id="in-the-box" className="box-contents">
-      <div><div className="eyebrow dark">ХАЙРЦАГТ</div><h2>Ашиглаж эхлэхэд хэрэгтэй зүйлс.</h2></div>
-      <ul><li>{name}</li><li>Charging/data cable</li><li>Documentation</li></ul>
+      <div><div className="eyebrow dark">{t('IN THE BOX')}</div><h2>{t('Everything you need to get started.')}</h2></div>
+      <ul><li>{name}</li><li>{t('Charging/data cable')}</li><li>{t('Documentation')}</li></ul>
     </section>
   )
 }

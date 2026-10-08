@@ -1,4 +1,5 @@
-import { footerColumns, legalLinks, mn, slugify } from '../../data/site'
+import { footerColumns, legalLinks, slugify } from '../../data/site'
+import { useLocale } from '../../context/locale'
 import Logo from './Logo'
 
 const socials = [
@@ -9,14 +10,15 @@ const socials = [
 ]
 
 export default function Footer() {
+  const { t, locale } = useLocale()
   return (
     <footer className="bg-black px-4 pb-6 pt-10 text-white lg:px-10">
       <div className="grid gap-8 sm:grid-cols-3 lg:max-w-4xl">
         {footerColumns.map((column) => (
-          <div key={mn(column.title)}>
-            <h3 className="mb-3 font-display text-base uppercase">{mn(column.title)}</h3>
+          <div key={t(column.title)}>
+            <h3 className="mb-3 font-display text-base uppercase">{t(column.title)}</h3>
             <ul className="space-y-1.5">
-              {column.links.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="text-[12.8px] hover:underline">{mn(link)}</a></li>)}
+              {column.links.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="text-[12.8px] hover:underline">{t(link)}</a></li>)}
             </ul>
           </div>
         ))}
@@ -24,7 +26,7 @@ export default function Footer() {
       <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
         <div>
           <Logo inverted />
-          <p className="mt-3 text-sm">Монгол Улс</p>
+          <p className="mt-3 text-sm">{locale === 'mn' ? 'Инжиниринг Геодези ХХК' : 'Engineering Geodesy LLC'}</p>
         </div>
         <ul className="flex gap-3">
           {socials.map(({ label, short }) => (
@@ -33,9 +35,9 @@ export default function Footer() {
         </ul>
       </div>
       <div className="mt-6 flex flex-wrap justify-between gap-4 border-t border-white pt-4 text-xs">
-        <p>{mn('Copyright © Garmin storefront demo')}</p>
+        <p>{t('Copyright © Garmin storefront demo')}</p>
         <ul className="flex flex-wrap gap-6">
-          {legalLinks.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="hover:underline">{mn(link)}</a></li>)}
+          {legalLinks.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="hover:underline">{t(link)}</a></li>)}
         </ul>
       </div>
     </footer>
