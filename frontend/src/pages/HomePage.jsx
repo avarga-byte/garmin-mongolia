@@ -17,7 +17,7 @@ export default function HomePage() {
       <PromoCardGrid cards={promoCardsBottom} />
       <WideBanner {...kidsBanner} />
       <section className="px-2 py-5 md:px-4">
-        <SectionHeading>Shop by category</SectionHeading>
+        <SectionHeading>Ангиллаар үзэх</SectionHeading>
         <TileGrid tiles={categories} />
       </section>
     </main>

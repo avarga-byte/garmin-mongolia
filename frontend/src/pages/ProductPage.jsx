@@ -6,10 +6,10 @@ import { relatedProducts } from '../data/products'
 
 export default function ProductPage({ product }) {
   const tabs = [
-    { id: 'overview', label: 'Overview' },
-    product.stories.length > 0 && { id: 'features', label: 'Features' },
-    product.specifications.length > 0 && { id: 'specifications', label: 'Specifications' },
-    { id: 'in-the-box', label: 'In the Box' },
+    { id: 'overview', label: 'Тойм' },
+    product.stories.length > 0 && { id: 'features', label: 'Онцлог' },
+    product.specifications.length > 0 && { id: 'specifications', label: 'Үзүүлэлт' },
+    { id: 'in-the-box', label: 'Хайрцагт' },
   ].filter(Boolean)
 
   return (

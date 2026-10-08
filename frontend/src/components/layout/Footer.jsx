@@ -1,4 +1,4 @@
-import { footerColumns, legalLinks, slugify } from '../../data/site'
+import { footerColumns, legalLinks, mn, slugify } from '../../data/site'
 import Logo from './Logo'
 
 const socials = [
@@ -13,10 +13,10 @@ export default function Footer() {
     <footer className="bg-black px-4 pb-6 pt-10 text-white lg:px-10">
       <div className="grid gap-8 sm:grid-cols-3 lg:max-w-4xl">
         {footerColumns.map((column) => (
-          <div key={column.title}>
-            <h3 className="mb-3 font-display text-base uppercase">{column.title}</h3>
+          <div key={mn(column.title)}>
+            <h3 className="mb-3 font-display text-base uppercase">{mn(column.title)}</h3>
             <ul className="space-y-1.5">
-              {column.links.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="text-[12.8px] hover:underline">{link}</a></li>)}
+              {column.links.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="text-[12.8px] hover:underline">{mn(link)}</a></li>)}
             </ul>
           </div>
         ))}
@@ -24,7 +24,7 @@ export default function Footer() {
       <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
         <div>
           <Logo inverted />
-          <p className="mt-3 text-sm">United Arab Emirates</p>
+          <p className="mt-3 text-sm">Монгол Улс</p>
         </div>
         <ul className="flex gap-3">
           {socials.map(({ label, short }) => (
@@ -33,9 +33,9 @@ export default function Footer() {
         </ul>
       </div>
       <div className="mt-6 flex flex-wrap justify-between gap-4 border-t border-white pt-4 text-xs">
-        <p>Copyright © Garmin storefront demo</p>
+        <p>{mn('Copyright © Garmin storefront demo')}</p>
         <ul className="flex flex-wrap gap-6">
-          {legalLinks.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="hover:underline">{link}</a></li>)}
+          {legalLinks.map((link) => <li key={link}><a href={`/${slugify(link)}`} className="hover:underline">{mn(link)}</a></li>)}
         </ul>
       </div>
     </footer>

@@ -8,7 +8,7 @@ const sizes = {
   md: 'h-8 px-4 text-[11px]',
 }
 
-export default function ShopButton({ href, children = 'Shop now', variant = 'light', size = 'md', className = '' }) {
+export default function ShopButton({ href, children = 'Одоо үзэх', variant = 'light', size = 'md', className = '' }) {
   return (
     <a href={href} className={`inline-flex shrink-0 items-center justify-center uppercase tracking-wide transition-colors ${variants[variant]} ${sizes[size]} ${className}`}>
       {children}

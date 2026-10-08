@@ -1,11 +1,11 @@
 // Shared site-wide content: header navigation, top bar and footer.
-// Copy is written for this project; images are referenced by URL from the Garmin UAE CDN.
+// Shared Garmin storefront content and global product imagery.
 
 const MEDIA = 'https://staginggarmin.garmin.ae/media'
 
 export const media = (file) => `${MEDIA}/${encodeURI(file)}`
 
-export const announcement = 'Free delivery on orders above AED 300 | Easy payment plans available*'
+export const announcement = 'МОНГОЛ УЛС · ТӨГРӨГ (₮) · ХҮРГЭЛТ, ТӨЛБӨРИЙН НӨХЦӨЛИЙГ ЛАВЛАНА УУ'
 
 export const navigation = [
   {
@@ -73,3 +73,16 @@ export const footerColumns = [
 export const legalLinks = ['Site Map', 'Terms of Use', 'Privacy', 'Compliance']
 
 export const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
+const mongolian = {
+  'Smartwatches': 'Ухаалаг цаг', 'Sports & Fitness': 'Спорт ба фитнес', 'Outdoor Recreation': 'Аялал, адал явдал', 'Automotive': 'Автомашин', 'Marine': 'Далайн төхөөрөмж', 'Aviation': 'Нисэх',
+  'Products': 'Бүтээгдэхүүн', 'Maps': 'Газрын зураг', 'Accessories & Plans': 'Дагалдах хэрэгсэл, үйлчилгээ', 'Accessories': 'Дагалдах хэрэгсэл', 'Discover': 'Танилцах', 'Apps & Services': 'Апп, үйлчилгээ',
+  'Support': 'Тусламж', 'Customer Service': 'Хэрэглэгчийн үйлчилгээ', 'Company': 'Компанийн тухай', 'Platforms': 'Платформууд', 'Garmin Support Centre': 'Garmin тусламж', 'Contact Us': 'Холбоо барих', 'Store Locator': 'Дэлгүүрийн байршил', 'Warranty Information': 'Баталгаат засвар', 'Bulk Enquiry': 'Бөөний захиалга', 'Deals and Promotions': 'Урамшуулал', 'Shipping & Returns Policy': 'Хүргэлт, буцаалт', 'Partner With Us': 'Хамтран ажиллах', 'About Us': 'Бидний тухай', 'Blog': 'Блог', "FAQ's": 'Түгээмэл асуулт', 'Sustainability': 'Тогтвортой хөгжил', 'Site Map': 'Сайтын бүтэц', 'Terms of Use': 'Үйлчилгээний нөхцөл', 'Privacy': 'Нууцлал', 'Compliance': 'Нийцэл',
+  'Featured': 'Онцлох бүтээгдэхүүн', 'Previous products': 'Өмнөх бүтээгдэхүүн', 'Next products': 'Дараах бүтээгдэхүүн', 'Highlights': 'Онцлох бүтээгдэхүүн', 'Previous slide': 'Өмнөх слайд', 'Next slide': 'Дараах слайд', 'Pause slideshow': 'Слайдыг түр зогсоох', 'Play slideshow': 'Слайдыг тоглуулах', 'Shop now': 'Одоо үзэх', 'Shop by category': 'Ангиллаар үзэх',
+  'Need a map update?': 'Газрын зургийн шинэчлэл хэрэгтэй юу?', 'Sign up for Garmin news': 'Garmin-ийн мэдээ авах', 'Thanks for signing up!': 'Бүртгүүлсэнд баярлалаа!', 'Email': 'И-мэйл', 'Subscribe': 'Бүртгүүлэх', 'Product news and offers tailored to your interests and devices.': 'Танд тохирсон бүтээгдэхүүний мэдээ, урамшууллыг хүлээн аваарай.',
+  "What You'll Love": 'ОНЦЛОХ ФУНКЦ', 'General': 'Ерөнхий', 'Clock Features': 'Цагийн функц', 'Health & Wellness Monitoring': 'Эрүүл мэндийн хяналт', 'Sensors': 'Мэдрэгч', 'Daily Smart Features': 'Өдөр тутмын ухаалаг функц', 'Workout and Training Plans': 'Дасгал, бэлтгэлийн төлөвлөгөө', 'Activity Profiles': 'Хөдөлгөөний төрөл', 'Safety and Tracking Features': 'Аюулгүй байдал, байршлын хяналт', 'Training, Planning and Analysis Features': 'Бэлтгэл, төлөвлөлт, дүн шинжилгээ', 'Running Features': 'Гүйлтийн функц', 'Golfing Features': 'Гольфын функц', 'Mapping & Navigation': 'Газрын зураг, чиглүүлэлт', 'Cycling Features': 'Дугуйн функц', 'Swimming Features': 'Усанд сэлэлтийн функц', 'Battery life (smartwatch mode)': 'Батерейн ажиллах хугацаа (ухаалаг цагийн горим)', 'Built-in mapping': 'Суурилуулсан газрын зураг', 'Pulse Ox blood oxygen': 'Pulse Ox цусан дахь хүчилтөрөгч', 'LED flashlight': 'LED гар чийдэн', 'Solar charging': 'Нарны цэнэглэлт', 'Touchscreen': 'Мэдрэгчтэй дэлгэц', 'Water rating': 'Усны хамгаалалт', 'Strap material': 'Бүсний материал', 'Lens material': 'Шилний материал', 'Bezel material': 'Хүрээний материал', 'Case material': 'Их биеийн материал', 'Physical size': 'Хэмжээ', 'Weight': 'Жин', 'Display Size': 'Дэлгэцийн хэмжээ', 'Display resolution': 'Дэлгэцийн нягтаршил', 'Battery type': 'Батерейн төрөл', 'Battery life': 'Батерейн ажиллах хугацаа', 'Memory/History': 'Санах ой / түүх', 'PRODUCT OVERVIEW': 'БҮТЭЭГДЭХҮҮНИЙ ТУХАЙ', 'Made for your activities': 'Таны идэвхтэй амьдралд', 'PRODUCT INFORMATION': 'БҮТЭЭГДЭХҮҮНИЙ МЭДЭЭЛЭЛ', 'Specifications': 'Үзүүлэлт', 'Explore features, technical details and compatibility information for': 'Онцлог, техникийн үзүүлэлт болон нийцлийн мэдээлэл:', 'details': 'үзүүлэлт', 'NEED A HAND?': 'ТУСЛАМЖ ХЭРЭГТЭЙ ЮУ?', 'Support and resources': 'Тусламж, материал', 'Get manuals, software updates and help for': 'Заавар, программын шинэчлэл болон тусламж:', 'Owner’s manual': 'Хэрэглэгчийн заавар', 'Software and updates': 'Программ, шинэчлэл', 'Product support': 'Бүтээгдэхүүний тусламж', 'KEEP EXPLORING': 'ЦААШ ҮЗЭХ', 'You may also like': 'Танд таалагдаж магадгүй', 'VIEW PRODUCT': 'БҮТЭЭГДЭХҮҮН ҮЗЭХ', 'IN THE BOX': 'ХАЙРЦАГТ', 'Everything you need to get started.': 'Ашиглаж эхлэхэд хэрэгтэй зүйлс.', 'COLOR': 'ӨНГӨ', 'ADD TO CART': 'САГСАНД НЭМЭХ', 'ADDED TO CART': 'САГСАНД НЭМЛЭЭ', 'In stock · Ships in 1–3 days': 'Бэлэн эсэх, хүргэлтийн хугацааг лавлана уу', 'Carbon Gray': 'Нүүрсэн саарал', 'Olive Green': 'Чидун ногоон', 'Orange': 'Улбар шар',
+  '30-day returns': 'Буцаалтын нөхцөлийг лавлана уу', '1-year limited warranty': 'Баталгааны нөхцөлийг лавлана уу',
+  'Copyright © Garmin storefront demo': '© Garmin Mongolia. Бүх эрх хуулиар хамгаалагдсан.', 'Authorised Distributor': 'Монгол дахь албан ёсны дистрибьютор', 'Included': 'Багтсан', 'yes': 'Тийм', 'yes (with compatible accessory)': 'Нийцтэй дагалдах хэрэгсэлтэй', 'compatible (26 mm)': '26 мм QuickFit® бүстэй нийцнэ',
+}
+
+export const mn = (text) => mongolian[text] || text

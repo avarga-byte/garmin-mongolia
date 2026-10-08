@@ -3,7 +3,7 @@ import ArrowButton from '../ui/ArrowButton'
 import SectionBand from '../ui/SectionBand'
 import ProductCard from './ProductCard'
 
-export default function FeaturedCarousel({ title = 'Featured', products }) {
+export default function FeaturedCarousel({ title = 'Онцлох бүтээгдэхүүн', products }) {
   const track = useRef(null)
   const scroll = (direction) => track.current?.scrollBy({ left: direction * track.current.clientWidth * 0.8, behavior: 'smooth' })
 
@@ -18,8 +18,8 @@ export default function FeaturedCarousel({ title = 'Featured', products }) {
             </li>
           ))}
         </ul>
-        <ArrowButton direction="prev" label="Previous products" onClick={() => scroll(-1)} className="absolute left-2 top-1/2 -translate-y-1/2" />
-        <ArrowButton direction="next" label="Next products" onClick={() => scroll(1)} className="absolute right-2 top-1/2 -translate-y-1/2" />
+        <ArrowButton direction="prev" label={mn('Previous products')} onClick={() => scroll(-1)} className="absolute left-2 top-1/2 -translate-y-1/2" />
+        <ArrowButton direction="next" label={mn('Next products')} onClick={() => scroll(1)} className="absolute right-2 top-1/2 -translate-y-1/2" />
       </div>
     </section>
   )

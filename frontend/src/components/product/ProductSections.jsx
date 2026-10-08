@@ -1,3 +1,4 @@
+import { mn } from '../../data/site'
 import { ArrowRight } from 'lucide-react'
 
 export function Breadcrumbs({ trail }) {
@@ -5,7 +6,7 @@ export function Breadcrumbs({ trail }) {
     <div className="breadcrumbs">
       {trail.map(({ label, href }, index) => index === trail.length - 1
         ? <b key={label}>{label}</b>
-        : <span key={label} className="contents"><a href={href}>{label}</a><span>/</span></span>)}
+        : <span key={label} className="contents"><a href={href}>{mn(label === 'Home' ? 'Нүүр' : label === 'Products' ? 'Бүтээгдэхүүн' : label)}</a><span>/</span></span>)}
     </div>
   )
 }
@@ -16,14 +17,14 @@ export function SectionTabs({ tabs }) {
 
 export function ProductOverview({ product }) {
   const cards = [
-    product.battery && [product.battery, 'Battery life'],
-    product.highlight && [product.highlight, 'Made for your activities'],
-    product.water && [product.water, 'Water rating'],
+    product.battery && [product.battery, 'Батерейн ажиллах хугацаа'],
+    product.highlight && [product.highlight, 'Таны идэвхтэй амьдралд'],
+    product.water && [product.water, 'Усны хамгаалалт'],
   ].filter(Boolean)
 
   return (
     <section id="overview" className="pdp-overview">
-      <div className="eyebrow dark">PRODUCT OVERVIEW</div>
+      <div className="eyebrow dark">БҮТЭЭГДЭХҮҮНИЙ ТУХАЙ</div>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       {cards.length > 0 && (
@@ -52,13 +53,13 @@ export function SpecificationList({ name, groups }) {
   if (!groups.length) return null
   return (
     <section className="full-specs" id="specifications">
-      <div className="eyebrow dark">PRODUCT INFORMATION</div>
-      <h2>Specifications</h2>
-      <p className="spec-intro">Explore features, technical details and compatibility information for {name}.</p>
+      <div className="eyebrow dark">БҮТЭЭГДЭХҮҮНИЙ МЭДЭЭЛЭЛ</div>
+      <h2>Үзүүлэлт</h2>
+      <p className="spec-intro">{name}-ийн онцлог, техникийн үзүүлэлт болон нийцлийн мэдээлэл.</p>
       {groups.map((group, index) => (
         <details className="spec-group" key={group.title} open={index === 0}>
-          <summary>{group.title}<span>{group.rows.length} details</span></summary>
-          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{label}</th><td>{value}</td></tr>)}</tbody></table>
+          <summary>{mn(group.title)}<span>{group.rows.length} үзүүлэлт</span></summary>
+          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{mn(label)}</th><td>{mn(value)}</td></tr>)}</tbody></table>
         </details>
       ))}
     </section>
@@ -67,16 +68,16 @@ export function SpecificationList({ name, groups }) {
 
 export function SupportResources({ product }) {
   if (!product.sku) return null
-  const links = [['manuals', 'Owner’s manual'], ['software', 'Software and updates'], ['topics', 'Product support']]
+  const links = [['manuals', 'Хэрэглэгчийн заавар'], ['software', 'Программ, шинэчлэл'], ['topics', 'Бүтээгдэхүүний тусламж']]
   return (
     <section className="support-resources">
       <div>
-        <div className="eyebrow dark">NEED A HAND?</div>
-        <h2>Support and resources</h2>
-        <p>Get manuals, software updates and help for {product.name}.</p>
+        <div className="eyebrow dark">ТУСЛАМЖ ХЭРЭГТЭЙ ЮУ?</div>
+        <h2>Тусламж, материал</h2>
+        <p>{product.name}-ийн заавар, программын шинэчлэл болон тусламж.</p>
       </div>
       <div>
-        {links.map(([tab, label]) => <a key={tab} href={`https://support.garmin.com/en-US/?tab=${tab}&partNumber=${product.sku}`}>{label} <ArrowRight /></a>)}
+        {links.map(([tab, label]) => <a key={tab} href={`https://support.garmin.com/?tab=${tab}&partNumber=${product.sku}`}>{label} <ArrowRight /></a>)}
       </div>
     </section>
   )
@@ -85,15 +86,15 @@ export function SupportResources({ product }) {
 export function RelatedProducts({ products }) {
   return (
     <section className="related-products">
-      <div className="eyebrow dark">KEEP EXPLORING</div>
-      <h2>You may also like</h2>
+      <div className="eyebrow dark">ЦААШ ҮЗЭХ</div>
+      <h2>Танд таалагдаж магадгүй</h2>
       <div className="related-grid">
         {products.map((item) => (
           <a className="related-card" href={item.href} key={item.id}>
             <img src={item.image} alt={item.name} />
             <h3>{item.name}</h3>
-            <span>{item.price} USD</span>
-            <b>VIEW PRODUCT <ArrowRight /></b>
+            <span>{item.priceLabel || item.price || 'Үнэ лавлах'}</span>
+            <b>БҮТЭЭГДЭХҮҮН ҮЗЭХ <ArrowRight /></b>
           </a>
         ))}
       </div>
@@ -104,7 +105,7 @@ export function RelatedProducts({ products }) {
 export function BoxContents({ name }) {
   return (
     <section id="in-the-box" className="box-contents">
-      <div><div className="eyebrow dark">IN THE BOX</div><h2>Everything you need to get started.</h2></div>
+      <div><div className="eyebrow dark">ХАЙРЦАГТ</div><h2>Ашиглаж эхлэхэд хэрэгтэй зүйлс.</h2></div>
       <ul><li>{name}</li><li>Charging/data cable</li><li>Documentation</li></ul>
     </section>
   )
