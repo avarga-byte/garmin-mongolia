@@ -1,4 +1,3 @@
-// "Shop by" checkbox groups. Options come from the products in the current category.
 export default function FilterSidebar({ groups, selected, onToggle, onClear }) {
   const active = groups.some((group) => selected[group.key].length > 0)
 

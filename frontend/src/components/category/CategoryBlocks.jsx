@@ -5,7 +5,6 @@ import { linkProps } from '../../data/site'
 import FeaturedCarousel from '../home/FeaturedCarousel'
 import ShopButton from '../ui/ShopButton'
 
-// Content blocks above and below the product grid, as laid out on garmin.ae category pages.
 
 export function Banner({ image, mobileImage }) {
   return (
@@ -33,7 +32,6 @@ function Video({ image, video }) {
   )
 }
 
-// "Most popular" strip: series cut-outs over a landscape photo, each one filtering the grid.
 function SeriesStrip({ title, image }) {
   return (
     <section className="relative pb-10 pt-8 md:pt-10">

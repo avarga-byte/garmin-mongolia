@@ -16,7 +16,6 @@ const sortOptions = [
   { value: 'price-desc', label: 'Price: High to Low', compare: (a, b) => b.price - a.price },
 ]
 
-// Filter groups use the same query keys as garmin.ae, so their in-page links ("?features=…") work here too.
 const facets = [
   { key: 'series', label: 'Shop by Series', values: (product) => (product.series ? [product.series] : []) },
   { key: 'features', label: 'Shop by Feature', values: (product) => product.features },
@@ -94,7 +93,6 @@ export default function CategoryPage({ category }) {
   return (
     <main className={compared.length ? 'pb-20' : ''}>
       {category.banner && <Banner image={category.banner} />}
-      {/* A headline repeating the page title would show twice next to the h1 below. */}
       <CategoryBlocks blocks={category.top.filter((block) => block.type !== 'headline' || block.text.toLowerCase() !== category.title.toLowerCase())} />
 
       <nav aria-label="Breadcrumb" className="px-4 pt-6 text-xs text-neutral-600 lg:px-6">
@@ -110,7 +108,6 @@ export default function CategoryPage({ category }) {
       ) : (
         <section id="products" className="scroll-mt-28 border-t border-neutral-200 lg:grid lg:grid-cols-[270px_1fr]">
           {groups.length > 0 && (
-            // Full-screen drawer on small screens, a static column from lg up.
             <aside className={`${filtersOpen ? 'fixed inset-0 z-50 overflow-y-auto bg-white' : 'hidden'} px-4 py-5 lg:static lg:block lg:border-r lg:border-neutral-200 lg:px-[18px]`}>
               <div className="mb-4 flex items-center justify-between lg:hidden">
                 <h2 className="font-display text-xl uppercase">Filters</h2>

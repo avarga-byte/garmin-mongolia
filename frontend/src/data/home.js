@@ -5,9 +5,6 @@ export const heroSlides = [
   { title: 'CIRQA™ SMART BAND', copy: 'All-day tracking with no screen to distract you.', desktop: '85883-homebanner-lg.webp', mobile: 'Banner 2.webp', href: '/p/cirqa' },
   { title: 'APPROACH® Z10', copy: 'A pocket-size rangefinder with 6x zoom.', desktop: 'homebanner-lg-12.webp', mobile: 'homebanner-sm-10.webp', href: '/p/approach-z10' },
   { title: 'FORERUNNER® 70 | 170', copy: 'Simple GPS running watches for new runners.', desktop: '84290-homebanner-lg-1.webp', mobile: '84290-homebanner-sm-1.webp', href: '/p/forerunner-170' },
-  { title: 'GARMIN CATALYST™ R1', copy: 'Rear-facing radar made for track days.', desktop: '86762-homebanner-lg.webp', mobile: '86762-homebanner-sm.webp', href: '/p/catalyst-r1' },
-  { title: 'LIVESCOPE™ 2 HD', copy: 'Watch fish react to your lure in real time.', desktop: '82420-homebanner-lg.webp', mobile: '82420-homebanner-sm.webp', href: '/p/livescope-2' },
-  { title: 'D2™ MACH 2 PRO', copy: 'An aviator watch with satellite and LTE.', desktop: '85088-1-D.webp', mobile: '85088-3-M.webp', href: '/p/d2-mach-2-pro' },
   { title: 'DESCENT™ MK3I', copy: 'Dive computer in two-tone titanium.', desktop: '83354-homebanner-lg.webp', mobile: '83354-homebanner-sm.webp', href: '/p/descent-mk3i' },
   { title: 'INSTINCT® 3 ALPINE RUSH', copy: 'Rugged watches in limited-edition colours.', desktop: 'homebanner-lg-11.webp', mobile: 'homebanner-sm-9.webp', href: '/p/instinct-3-alpine' },
   { title: 'VENU® 4', copy: 'Everyday health insights on your wrist.', desktop: '77986-homebanner-lg.webp', mobile: '77986-homebanner-sm.webp', href: '/p/venu-4' },
@@ -19,10 +16,8 @@ export const featuredProducts = [
   { id: 'fenix-9', name: 'FĒNIX® 9', copy: 'Multisport GPS watch with advanced training tools.', image: 'image - 2026-08-25T163148.682.webp' },
   { id: 'cirqa', name: 'CIRQA™ SMART BAND', copy: 'Screenless band for sleep, stress and activity.', image: 'image - 2026-07-22T092851.059.webp' },
   { id: 'approach-z10', name: 'APPROACH® Z10', copy: 'Rangefinder that syncs distances to your golf watch.', image: 'image - 2026-08-03T152533.574.webp' },
-  { id: 'livescope-2', name: 'LIVESCOPE™ 2 AND 2 HD', copy: 'Live sonar with wider coverage and sharper detail.', image: 'image - 2026-07-14T104349.806.webp' },
   { id: 'forerunner-170', name: 'FORERUNNER® 70 | 170', copy: 'Running watches with the essentials, plus optional music.', image: 'Forerunner 170.webp' },
   { id: 'descent-mk3i', name: 'DESCENT™ MK3I', copy: 'AMOLED dive computer with air integration.', image: 'Descent Mk3i (1).webp' },
-  { id: 'catalyst-r1', name: 'GARMIN CATALYST™ R1', copy: 'Racing radar for drivers who push the limit.', image: 'GARMIN CATALYSTâ¢ R1.webp' },
   { id: 'instinct-3-alpine', name: 'INSTINCT® 3 ALPINE RUSH', copy: 'Tough outdoor watches in seasonal colours.', image: 'Instinct-3-Alpine-Rush-Collection.webp' },
   { id: 'tactix-8', name: 'TACTIX® 8 – CERAKOTE®', copy: 'Tactical AMOLED watch with a hard-wearing finish.', image: 'Tactix-8---Cerakote.webp' },
   { id: 'varia-820', name: 'VARIA™ REARVUE 820', copy: 'Bike radar and tail light in one compact unit.', image: 'Varia_Rearvue-820.webp' },
@@ -30,7 +25,6 @@ export const featuredProducts = [
   { id: 'approach-g82', name: 'APPROACH® G82', copy: 'Launch monitor and handheld GPS for practice and play.', image: 'Approach-G82 (1).webp' },
   { id: 'xero-l60i', name: 'XERO® L60i', copy: 'Rangefinder with mapping and navigation overlays.', image: 'Xero-L60i (1).webp' },
   { id: 'venu-x1', name: 'VENU® X1', copy: 'Thin GPS smartwatch with a large AMOLED display.', image: 'Venu X1 (1).webp' },
-  { id: 'quatix-8-pro', name: 'QUATIX® 8 PRO', copy: 'Boating smartwatch with satellite and LTE.', image: 'Quatix-8-Pro.webp' },
 ].map((product) => ({ ...product, image: media(product.image), href: `/p/${product.id}` }))
 
 // White cards laid out two per row.
@@ -56,9 +50,6 @@ export const kidsBanner = { title: 'Wearables made for kids', image: media('8278
 
 export const categories = [
   { title: 'Smartwatches', image: media('74662-smartwatch-pod.webp'), href: '/c/wearables-smartwatches' },
-  { title: 'Automotive', image: media('74662-automotive-pod.webp'), href: '/c/automotive' },
   { title: 'Sports & Fitness', image: media('74662-sports-and-fitness-pod.webp'), href: '/c/sports-fitness' },
   { title: 'Outdoor Recreation', image: media('46074-outdoor_recreation.jpg'), href: '/c/outdoor-recreation' },
-  { title: 'Marine', image: media('74662-marine-pod.webp'), href: '/c/marine' },
-  { title: 'Aviation', image: media('46074-aviation.webp'), href: '/c/aviation' },
 ]

@@ -9,8 +9,7 @@ import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import ProductPage from './pages/ProductPage'
 
-// Minimal path-based routing: "/" is home, "/p/:id" (or legacy "/products/:id") is a product page,
-// "/c/:slug" (any depth; the last segment wins) is a category page.
+// Minimal path-based routing: "/" is home, "/p/:id" (or legacy "/products/:id") is a product page.
 function route(pathname) {
   const [section, id, ...rest] = pathname.split('/').filter(Boolean)
   if (!section || section === 'index.html') return <HomePage />

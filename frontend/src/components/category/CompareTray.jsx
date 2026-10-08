@@ -12,7 +12,6 @@ const rows = [
   ['Activities', (product) => product.activities.map((activity) => activity.title).join(', ') || '—'],
 ]
 
-// Sticky bar with the products picked for comparison, plus a side-by-side table.
 export default function CompareTray({ products, onRemove }) {
   const [open, setOpen] = useState(false)
   if (!products.length) return null

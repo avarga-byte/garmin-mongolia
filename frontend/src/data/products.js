@@ -30,7 +30,6 @@ export function findProduct(id) {
   if (detailed) return { ...detailed, gallery: galleryFor(detailed), specifications: productSpecifications[detailed.specKey] || [], stories: id === 'enduro-4' ? enduroStories : [] }
   const featured = featuredProducts.find((product) => product.id === id)
   if (featured) return { ...featured, description: featured.copy, gallery: [featured.image], specifications: [], stories: [] }
-  // Category listings link to products by SKU.
   const listed = findCatalogProduct(id)
   if (listed) return { id, name: listed.title, kicker: listed.series?.title, description: listed.subtitle, image: listed.image, gallery: listed.gallery.length ? listed.gallery : [listed.image], price: formatPrice(listed.salePrice ?? listed.price), sku: listed.sku, specifications: [], stories: [] }
   return null

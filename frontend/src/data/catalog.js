@@ -1,4 +1,3 @@
-// Category pages and product listings snapshotted from garmin.ae (see scripts/import-catalog.mjs).
 import catalog from './catalog.json'
 
 export const { series } = catalog

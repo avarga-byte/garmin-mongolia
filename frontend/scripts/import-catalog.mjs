@@ -1,11 +1,8 @@
-// Snapshot garmin.ae category pages into src/data/catalog.json.
-// Run with `npm run import:catalog`. The storefront itself never calls the Garmin API.
 import { writeFile } from 'node:fs/promises'
 
 const BASE = 'https://www.garmin.ae'
 const OUTPUT = new URL('../src/data/catalog.json', import.meta.url)
 
-// Category paths as they appear in the garmin.ae navigation; the last segment is the API slug.
 const CATEGORY_PATHS = [
   'wearables-smartwatches',
   'women-wearables',
@@ -30,37 +27,11 @@ const CATEGORY_PATHS = [
   'apps',
   'outdoor-recreation',
   'optics',
-  'outdoor-maps',
   'outdoor-recreation/adventure-smartwatches',
   'outdoor-recreation/handhelds',
   'outdoor-recreation/satellite-communicators',
   'outdoor-recreation/ranging',
   'outdoor-recreation/dog-tracking',
-  'automotive',
-  'automotive/cars',
-  'automotive/motorcycles',
-  'automotive/trucks',
-  'automotive/motorsports',
-  'automotive/dash-cams-reverse-cameras',
-  'automotive/off-road',
-  'marine',
-  'marine/chartplotters',
-  'marine/autopilots',
-  'marine/radar',
-  'marine/live-sonar',
-  'marine/sonar-black-boxes',
-  'marine/transducers',
-  'marine/instruments-instrument-packs',
-  'marine/vhf-ais',
-  'marine/marine-cameras',
-  'marine/antennas-sensors',
-  'marine/trolling-motors',
-  'marine/fusion-audio-entertainment',
-  'marine/digital-switching-marine',
-  'marine/handhelds-wearables-marine',
-  'marine/connectivity',
-  'aviation',
-  'portable-gps',
 ]
 
 const get = async (path) => {
@@ -70,18 +41,16 @@ const get = async (path) => {
 }
 
 const plain = (html) => (html ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
-// Keeps paragraph breaks ("</p>", "<br>") as newlines.
 const paragraphs = (html) => (html ?? '').split(/<\/p>|<br\s*\/?>/i).map(plain).filter(Boolean).join('\n')
 const richText = (nodes = []) => nodes.map((node) => node.text ?? richText(node.children)).join('')
 const imageUrl = (image) => image?.url || null
 const slugOf = (path) => path.split('/').at(-1)
-
-// Rewrite garmin.ae links to this storefront: /p/:sku stays, /c/... keeps only its last segment.
+const EXCLUDED = /quatix|D2™|Catalyst|zūmo|Tread®|dēzl|DriveSmart|DriveTrack|Fusion|LiveScope/i
+const allowed = (item) => !EXCLUDED.test(item.title)
 function localLink(url = '') {
   const value = url.replace(/^https?:\/\/(www\.)?garmin\.ae/, '')
   if (/^\/p\/?\d/.test(value)) return value.replace(/^\/p\/?/, '/p/')
   if (value.startsWith('/c/')) return `/c/${value.split(/[?#]/)[0].split('/').filter(Boolean).at(-1)}${value.match(/\?[^#]*/)?.[0] ?? ''}`
-  // In-page filter links ("?features=…#shop", "#shop-watch") jump to the product grid.
   if (/^[?#]./.test(value)) return `${value.replace(/#.*/, '')}#products`
   return value || '#'
 }
@@ -113,9 +82,9 @@ function block(raw) {
     case 'mediaBlock':
       return { type: 'media', title: plain(raw.heading), text: richText(raw.text), image: imageUrl(raw.media), imageSide: raw.imagePosition === 'right' ? 'right' : 'left' }
     case 'featuredSlider':
-      return { type: 'slider', items: raw.featured_slider.items.map((item) => ({ title: plain(item.title), copy: plain(item.description), image: imageUrl(item.image), href: localLink(item.links?.[0]?.link?.url) })) }
+      return { type: 'slider', items: raw.featured_slider.items.map((item) => ({ title: plain(item.title), copy: plain(item.description), image: imageUrl(item.image), href: localLink(item.links?.[0]?.link?.url) })).filter(allowed) }
     default:
-      return null // newsletter is already rendered site-wide
+      return null
   }
 }
 
@@ -129,6 +98,7 @@ for (const path of CATEGORY_PATHS) {
   for (let page = 1; ; page++) {
     const listing = await get(`/api/graphQl/products?id=${category.id}&draft=false&series=null&activity=null&features=null&sortBy=null&page=${page}&FILTER_USERPROFILE_MARQGEN2=false&catv=2`)
     for (const doc of listing.docs) {
+      if (EXCLUDED.test(doc.CseriesName || doc.title)) continue
       skus.push(doc.sku)
       products[doc.sku] ??= {
         sku: doc.sku,
@@ -160,8 +130,6 @@ for (const path of CATEGORY_PATHS) {
   })
   console.log(`${slug}: ${skus.length} products`)
 }
-
-// Tiles linking to "#" on garmin.ae point at sibling categories by title; resolve them here.
 function byTitle(title) {
   const words = title.toLowerCase().replace(/ smartwatches$| products$/, '')
   return categories.find((category) => category.title.toLowerCase().includes(words))

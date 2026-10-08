@@ -1,6 +1,5 @@
 import { formatPrice } from '../../data/catalog'
 
-// Listing card: blue "NEW" flag, cut-out image, name, colour/variant line and price.
 export default function CatalogProductCard({ product, compareMode, compared, onCompare }) {
   return (
     <article className="group relative flex h-full flex-col bg-white p-2 shadow-[0_0_6px_rgba(0,0,0,0.1)] transition hover:shadow-lg">
