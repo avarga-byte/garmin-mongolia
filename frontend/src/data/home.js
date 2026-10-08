@@ -14,6 +14,26 @@ export const heroSlides = [
   { title: 'INSTINCT® 3 SUPERNOVA', copy: 'Bold new colours for the outdoors.', desktop: '77215-homebanner-lg.webp', mobile: '77215-homebanner-sm.webp', href: '/p/instinct-3-supernova' },
 ].map((slide) => ({ ...slide, desktop: media(slide.desktop), mobile: media(slide.mobile) }))
 
+const productFilters = {
+  'fenix-9-pro': { categories: ['smartwatches', 'sports-fitness', 'outdoor-recreation'], series: 'fenix-instinct', activities: ['Hiking', 'Running', 'Cycling', 'Strength'] },
+  'fenix-9': { categories: ['smartwatches', 'sports-fitness', 'outdoor-recreation'], series: 'fenix-instinct', activities: ['Hiking', 'Running', 'Cycling', 'Strength'] },
+  cirqa: { categories: ['smartwatches', 'sports-fitness'], activities: ['Running', 'Strength'] },
+  'approach-z10': { categories: ['sports-fitness'], activities: ['Golfing'] },
+  'livescope-2': { categories: ['marine'], activities: ['Boating'] },
+  'forerunner-170': { categories: ['smartwatches', 'sports-fitness'], series: 'forerunner', activities: ['Running'] },
+  'descent-mk3i': { categories: ['smartwatches', 'sports-fitness', 'outdoor-recreation'], activities: ['Diving', 'Swimming'] },
+  'catalyst-r1': { categories: ['automotive'], activities: ['Driving'] },
+  'instinct-3-alpine': { categories: ['smartwatches', 'outdoor-recreation'], series: 'fenix-instinct', activities: ['Hiking', 'Running', 'Cycling'] },
+  'tactix-8': { categories: ['smartwatches', 'outdoor-recreation'], activities: ['Hiking', 'Running', 'Swimming'] },
+  'varia-820': { categories: ['sports-fitness'], activities: ['Cycling'] },
+  'approach-j1': { categories: ['smartwatches', 'sports-fitness'], activities: ['Golfing'] },
+  'approach-g82': { categories: ['sports-fitness'], activities: ['Golfing'] },
+  'xero-l60i': { categories: ['outdoor-recreation'], activities: ['Hiking'] },
+  'venu-x1': { categories: ['smartwatches', 'sports-fitness'], series: 'venu-vivoactive', activities: ['Running', 'Strength', 'Swimming'] },
+  'quatix-8-pro': { categories: ['smartwatches', 'marine'], activities: ['Boating', 'Swimming'] },
+  'd2-mach-2-pro': { categories: ['smartwatches', 'aviation'], activities: ['Flying'] },
+}
+
 export const featuredProducts = [
   { id: 'fenix-9-pro', name: 'FĒNIX® 9 PRO', copy: 'Titanium multisport watch with optional inReach® messaging.', image: 'image - 2026-08-25T163145.411.webp' },
   { id: 'fenix-9', name: 'FĒNIX® 9', copy: 'Multisport GPS watch with advanced training tools.', image: 'image - 2026-08-25T163148.682.webp' },
@@ -31,7 +51,8 @@ export const featuredProducts = [
   { id: 'xero-l60i', name: 'XERO® L60i', copy: 'Rangefinder with mapping and navigation overlays.', image: 'Xero-L60i (1).webp' },
   { id: 'venu-x1', name: 'VENU® X1', copy: 'Thin GPS smartwatch with a large AMOLED display.', image: 'Venu X1 (1).webp' },
   { id: 'quatix-8-pro', name: 'QUATIX® 8 PRO', copy: 'Boating smartwatch with satellite and LTE.', image: 'Quatix-8-Pro.webp' },
-].map((product) => ({ ...product, image: media(product.image), href: `/p/${product.id}` }))
+  { id: 'd2-mach-2-pro', name: 'D2™ MACH 2 PRO', copy: 'Aviator smartwatch with GPS and flight tools.', image: '85088-3-M.webp' },
+].map((product) => ({ ...product, ...productFilters[product.id], image: media(product.image), href: `/p/${product.id}` }))
 
 // White cards laid out two per row.
 export const promoCardsTop = [

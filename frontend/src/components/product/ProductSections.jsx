@@ -52,7 +52,7 @@ export function FeatureStories({ stories }) {
   )
 }
 
-export function SpecificationList({ name, groups }) {
+export function SpecificationList({ name, groups, variant }) {
   const { t } = useLocale()
   if (!groups.length) return null
   return (
@@ -63,7 +63,7 @@ export function SpecificationList({ name, groups }) {
       {groups.map((group, index) => (
         <details className="spec-group" key={group.title} open={index === 0}>
           <summary>{t(group.title)}<span>{group.rows.length} {t('details')}</span></summary>
-          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{t(label)}</th><td>{t(value)}</td></tr>)}</tbody></table>
+          <table><tbody>{group.rows.map(([label, value]) => <tr key={label}><th>{t(label)}</th><td>{t(label === 'Battery life (smartwatch mode)' && variant?.battery ? variant.battery : value)}</td></tr>)}</tbody></table>
         </details>
       ))}
     </section>
