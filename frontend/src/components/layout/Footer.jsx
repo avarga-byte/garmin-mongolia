@@ -1,6 +1,5 @@
 import { footerColumns, legalLinks, slugify } from '../../data/site'
 import { useLocale } from '../../context/locale'
-import Logo from './Logo'
 
 const socials = [
   { label: 'Facebook', short: 'f' },
@@ -25,7 +24,9 @@ export default function Footer() {
       </div>
       <div className="mt-10 flex flex-wrap items-end justify-between gap-6">
         <div>
-          <Logo inverted />
+          <a href="https://geo-mongol.mn" aria-label="Инжиниринг Геодези ХХК">
+            <img src="/images/brand/engineering-geodesy.png" alt="Инжиниринг Геодези ХХК" className="h-14 w-14 rounded bg-white object-contain" />
+          </a>
           <p className="mt-3 text-sm">{locale === 'mn' ? 'Инжиниринг Геодези ХХК' : 'Engineering Geodesy LLC'}</p>
         </div>
         <ul className="flex gap-3">
