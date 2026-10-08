@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { Play } from 'lucide-react'
 import { series } from '../../data/catalog'
+import { linkProps } from '../../data/site'
 import FeaturedCarousel from '../home/FeaturedCarousel'
 import ShopButton from '../ui/ShopButton'
 
 // Content blocks above and below the product grid, as laid out on garmin.ae category pages.
-const isExternal = (href) => /^https?:/.test(href)
-const linkProps = (href) => (isExternal(href) ? { href, target: '_blank', rel: 'noreferrer' } : { href })
 
 export function Banner({ image, mobileImage }) {
   return (

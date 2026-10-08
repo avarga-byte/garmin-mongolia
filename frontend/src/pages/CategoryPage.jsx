@@ -102,66 +102,71 @@ export default function CategoryPage({ category }) {
         {parent && <> / <a href={parent.path} className="hover:underline">{parent.title}</a></>}
         {' / '}<span className="text-black">{category.title}</span>
       </nav>
-      <h1 className="px-4 pb-12 pt-8 text-center font-display text-3xl md:text-4xl">{category.title}</h1>
+      <h1 className={`px-4 pt-8 text-center font-display text-3xl md:text-4xl ${category.description ? 'pb-4' : 'pb-12'}`}>{category.title}</h1>
+      {category.description && <p className="mx-auto max-w-3xl whitespace-pre-line px-4 pb-12 text-center text-sm leading-relaxed text-neutral-700">{category.description}</p>}
 
-      <section id="products" className="scroll-mt-28 border-t border-neutral-200 lg:grid lg:grid-cols-[270px_1fr]">
-        {groups.length > 0 && (
-          // Full-screen drawer on small screens, a static column from lg up.
-          <aside className={`${filtersOpen ? 'fixed inset-0 z-50 overflow-y-auto bg-white' : 'hidden'} px-4 py-5 lg:static lg:block lg:border-r lg:border-neutral-200 lg:px-[18px]`}>
-            <div className="mb-4 flex items-center justify-between lg:hidden">
-              <h2 className="font-display text-xl uppercase">Filters</h2>
-              <button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X /></button>
-            </div>
-            <FilterSidebar groups={groups} selected={query} onToggle={toggleFilter} onClear={clearFilters} />
-            <button type="button" onClick={() => setFiltersOpen(false)} className="sticky bottom-0 mt-4 h-11 w-full bg-black font-display text-sm uppercase text-white lg:hidden">
-              Show {visible.length} {visible.length === 1 ? 'product' : 'products'}
-            </button>
-          </aside>
-        )}
-        <div className={`px-2 pb-12 pt-4 lg:px-2.5 ${groups.length ? '' : 'lg:col-span-2'}`}>
-          <div className="flex flex-wrap items-center gap-3 pb-6 lg:pl-0.5">
-            <button type="button" onClick={() => { setCompareMode(!compareMode); setCompared([]) }} className={`h-8 px-3 font-display text-[11px] uppercase ${compareMode ? 'border border-black bg-white text-black' : 'bg-black text-white'}`}>
-              {compareMode ? 'Cancel compare' : 'Compare'}
-            </button>
-            {groups.length > 0 && (
-              <button type="button" onClick={() => setFiltersOpen(!filtersOpen)} className="flex h-8 items-center gap-2 border border-neutral-300 px-3 text-xs lg:hidden" aria-expanded={filtersOpen}>
-                <SlidersHorizontal size={14} /> Filters{filterCount > 0 && ` (${filterCount})`}
+      {products.length === 0 ? (
+        <p id="products" className="border-t border-neutral-200 px-4 py-16 text-center text-sm text-neutral-600">No products are listed in this category yet.</p>
+      ) : (
+        <section id="products" className="scroll-mt-28 border-t border-neutral-200 lg:grid lg:grid-cols-[270px_1fr]">
+          {groups.length > 0 && (
+            // Full-screen drawer on small screens, a static column from lg up.
+            <aside className={`${filtersOpen ? 'fixed inset-0 z-50 overflow-y-auto bg-white' : 'hidden'} px-4 py-5 lg:static lg:block lg:border-r lg:border-neutral-200 lg:px-[18px]`}>
+              <div className="mb-4 flex items-center justify-between lg:hidden">
+                <h2 className="font-display text-xl uppercase">Filters</h2>
+                <button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters"><X /></button>
+              </div>
+              <FilterSidebar groups={groups} selected={query} onToggle={toggleFilter} onClear={clearFilters} />
+              <button type="button" onClick={() => setFiltersOpen(false)} className="sticky bottom-0 mt-4 h-11 w-full bg-black font-display text-sm uppercase text-white lg:hidden">
+                Show {visible.length} {visible.length === 1 ? 'product' : 'products'}
               </button>
-            )}
-            <span className="text-xs text-neutral-500">{visible.length} {visible.length === 1 ? 'product' : 'products'}</span>
-            <label className="ml-auto flex items-center gap-4 text-[11px] font-bold">
-              Sort By
-              <select value={query.sortBy} onChange={(event) => update({ sortBy: event.target.value })} className="h-11 w-[125px] border border-neutral-300 bg-white px-2 text-sm font-normal sm:w-[160px]">
-                {sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-              </select>
-            </label>
-          </div>
-
-          {pageItems.length > 0 ? (
-            <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {pageItems.map((product) => (
-                <li key={product.sku}>
-                  <CatalogProductCard product={product} compareMode={compareMode} compared={compared.includes(product.sku)} onCompare={() => toggleCompare(product.sku)} />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className="py-16 text-center text-sm">
-              No products match these filters. <button type="button" onClick={clearFilters} className="underline">Clear filters</button>
-            </div>
+            </aside>
           )}
-
-          {pageCount > 1 && (
-            <nav aria-label="Pagination" className="flex justify-center gap-2 pt-8">
-              {Array.from({ length: pageCount }, (_, index) => index + 1).map((number) => (
-                <button key={number} type="button" onClick={() => goToPage(number)} aria-current={number === page ? 'page' : undefined} className={`grid size-9 place-items-center border text-sm ${number === page ? 'border-black bg-black text-white' : 'border-neutral-300 hover:border-black'}`}>
-                  {number}
+          <div className={`px-2 pb-12 pt-4 lg:px-2.5 ${groups.length ? '' : 'lg:col-span-2'}`}>
+            <div className="flex flex-wrap items-center gap-3 pb-6 lg:pl-0.5">
+              <button type="button" onClick={() => { setCompareMode(!compareMode); setCompared([]) }} className={`h-8 px-3 font-display text-[11px] uppercase ${compareMode ? 'border border-black bg-white text-black' : 'bg-black text-white'}`}>
+                {compareMode ? 'Cancel compare' : 'Compare'}
+              </button>
+              {groups.length > 0 && (
+                <button type="button" onClick={() => setFiltersOpen(!filtersOpen)} className="flex h-8 items-center gap-2 border border-neutral-300 px-3 text-xs lg:hidden" aria-expanded={filtersOpen}>
+                  <SlidersHorizontal size={14} /> Filters{filterCount > 0 && ` (${filterCount})`}
                 </button>
-              ))}
-            </nav>
-          )}
-        </div>
-      </section>
+              )}
+              <span className="text-xs text-neutral-500">{visible.length} {visible.length === 1 ? 'product' : 'products'}</span>
+              <label className="ml-auto flex items-center gap-4 text-[11px] font-bold">
+                Sort By
+                <select value={query.sortBy} onChange={(event) => update({ sortBy: event.target.value })} className="h-11 w-[125px] border border-neutral-300 bg-white px-2 text-sm font-normal sm:w-[160px]">
+                  {sortOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </select>
+              </label>
+            </div>
+
+            {pageItems.length > 0 ? (
+              <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {pageItems.map((product) => (
+                  <li key={product.sku}>
+                    <CatalogProductCard product={product} compareMode={compareMode} compared={compared.includes(product.sku)} onCompare={() => toggleCompare(product.sku)} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="py-16 text-center text-sm">
+                No products match these filters. <button type="button" onClick={clearFilters} className="underline">Clear filters</button>
+              </div>
+            )}
+
+            {pageCount > 1 && (
+              <nav aria-label="Pagination" className="flex justify-center gap-2 pt-8">
+                {Array.from({ length: pageCount }, (_, index) => index + 1).map((number) => (
+                  <button key={number} type="button" onClick={() => goToPage(number)} aria-current={number === page ? 'page' : undefined} className={`grid size-9 place-items-center border text-sm ${number === page ? 'border-black bg-black text-white' : 'border-neutral-300 hover:border-black'}`}>
+                    {number}
+                  </button>
+                ))}
+              </nav>
+            )}
+          </div>
+        </section>
+      )}
 
       <CategoryBlocks blocks={category.bottom} />
       {compareMode && <CompareTray products={compared.map((sku) => products.find((product) => product.sku === sku))} onRemove={toggleCompare} />}

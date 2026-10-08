@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { CircleHelp, Menu, Search, ShoppingBag, UserRound, X } from 'lucide-react'
-import { categoryHref } from '../../data/catalog'
 import { navigation } from '../../data/site'
 import { useCart } from '../../context/CartContext'
 import AnnouncementBar from './AnnouncementBar'
@@ -26,7 +25,7 @@ export default function Header() {
           {navigation.map((item) => (
             <a
               key={item.label}
-              href={categoryHref(item.label)}
+              href={item.href}
               onMouseEnter={() => setOpenItem(item)}
               onFocus={() => setOpenItem(item)}
               className={`flex items-center border-b-2 px-3 font-display text-[13px] uppercase tracking-wide ${openItem === item ? 'border-black' : 'border-transparent'}`}

@@ -22,9 +22,15 @@ const CATEGORY_PATHS = [
   'sports-fitness/cycling',
   'sports-fitness/indoor-trainers',
   'sports-fitness/scales-monitors',
+  'sports-fitness/indoor-training-accessories',
+  'marathon-season',
+  'gaming',
   'wearables-smartwatches-accessories',
   'cycling-accessories',
+  'apps',
   'outdoor-recreation',
+  'optics',
+  'outdoor-maps',
   'outdoor-recreation/adventure-smartwatches',
   'outdoor-recreation/handhelds',
   'outdoor-recreation/satellite-communicators',
@@ -36,13 +42,23 @@ const CATEGORY_PATHS = [
   'automotive/trucks',
   'automotive/motorsports',
   'automotive/dash-cams-reverse-cameras',
+  'automotive/off-road',
   'marine',
   'marine/chartplotters',
-  'marine/live-sonar',
   'marine/autopilots',
   'marine/radar',
+  'marine/live-sonar',
+  'marine/sonar-black-boxes',
+  'marine/transducers',
+  'marine/instruments-instrument-packs',
+  'marine/vhf-ais',
+  'marine/marine-cameras',
+  'marine/antennas-sensors',
   'marine/trolling-motors',
+  'marine/fusion-audio-entertainment',
+  'marine/digital-switching-marine',
   'marine/handhelds-wearables-marine',
+  'marine/connectivity',
   'aviation',
   'portable-gps',
 ]
@@ -54,6 +70,8 @@ const get = async (path) => {
 }
 
 const plain = (html) => (html ?? '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+// Keeps paragraph breaks ("</p>", "<br>") as newlines.
+const paragraphs = (html) => (html ?? '').split(/<\/p>|<br\s*\/?>/i).map(plain).filter(Boolean).join('\n')
 const richText = (nodes = []) => nodes.map((node) => node.text ?? richText(node.children)).join('')
 const imageUrl = (image) => image?.url || null
 const slugOf = (path) => path.split('/').at(-1)
@@ -134,6 +152,7 @@ for (const path of CATEGORY_PATHS) {
     path: `/c/${slug}`,
     parent: path.includes('/') ? path.split('/')[0] : null,
     title: plain(category.heading || category.title),
+    description: typeof category.description === 'string' ? paragraphs(category.description) : '',
     banner: imageUrl(category.featuredImage),
     top: blocks(category.layoutTop),
     bottom: blocks(category.layoutBottom),

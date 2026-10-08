@@ -35,27 +35,27 @@ export const featuredProducts = [
 
 // White cards laid out two per row.
 export const promoCardsTop = [
-  { title: 'Forerunner® running smartwatches with bright AMOLED displays', image: media('66317-Homecard.webp'), href: '/c/running' },
-  { title: 'fēnix® 8 – AMOLED or solar, with a built-in speaker and mic', image: media('73263-POD-FENIX-8.webp'), href: '/c/multisport' },
+  { title: 'Forerunner® running smartwatches with bright AMOLED displays', image: media('66317-Homecard.webp'), href: '/c/running-smartwatches' },
+  { title: 'fēnix® 8 – AMOLED or solar, with a built-in speaker and mic', image: media('73263-POD-FENIX-8.webp'), href: '/c/multisport-smartwatches' },
 ]
 
 export const promoCardsBottom = [
-  { title: 'New to smartwatches? Find the right one for you.', image: media('46074-which_watch.webp'), href: '/c/smartwatches' },
+  { title: 'New to smartwatches? Find the right one for you.', image: media('46074-which_watch.webp'), href: '/c/wearables-smartwatches' },
   { title: 'Rugged gear for every adventure.', image: media('Banner - 1.webp'), href: '/c/outdoor-recreation' },
 ]
 
 // Image tiles with the title over a dark gradient.
 export const lifestyleTiles = [
   { title: 'Garmin Tacx® indoor training', image: media('TacxÂ® NEO 3M Smart 1.webp'), href: '/c/indoor-trainers' },
-  { title: 'Golf devices for every round', image: media('74662-golf-pod2.webp'), href: '/c/golf' },
+  { title: 'Golf devices for every round', image: media('74662-golf-pod2.webp'), href: '/c/golf-gps-devices-smartwatches' },
   { title: 'Wearables for women', image: media('82782-womens_wearables.webp'), href: '/c/women-wearables' },
 ]
 
 export const cyclingBanner = { title: 'Bike computers, radar and power meters', image: media('74662-1050-cycling-POD.webp'), href: '/c/cycling' }
-export const kidsBanner = { title: 'Wearables made for kids', image: media('82782-kids-pod-V3.webp'), href: '/c/kids-wearables' }
+export const kidsBanner = { title: 'Wearables made for kids', image: media('82782-kids-pod-V3.webp'), href: '/c/kids-wearables-fitness-activity-trackers' }
 
 export const categories = [
-  { title: 'Smartwatches', image: media('74662-smartwatch-pod.webp'), href: '/c/smartwatches' },
+  { title: 'Smartwatches', image: media('74662-smartwatch-pod.webp'), href: '/c/wearables-smartwatches' },
   { title: 'Automotive', image: media('74662-automotive-pod.webp'), href: '/c/automotive' },
   { title: 'Sports & Fitness', image: media('74662-sports-and-fitness-pod.webp'), href: '/c/sports-fitness' },
   { title: 'Outdoor Recreation', image: media('46074-outdoor_recreation.jpg'), href: '/c/outdoor-recreation' },
