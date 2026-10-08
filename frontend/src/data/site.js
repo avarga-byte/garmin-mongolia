@@ -97,7 +97,9 @@ export const footerDestinations = {
   Privacy: 'https://www.garmin.com/en-US/privacy/',
   Compliance: 'https://www.garmin.com/en-US/legal/compliance/',
   Blog: 'https://www.garmin.com/en-US/blog/',
-  'Deals and Promotions': 'https://www.garmin.com/en-US/c/sale/',
+  'Deals and Promotions': '/sales-promotions',
 }
+
+export const promotions = []
 
 export const slugify = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ProductCard from '../components/home/ProductCard'
 import { categories, featuredProducts } from '../data/home'
+import { comparePath } from '../data/products'
 import { useLocale } from '../context/locale'
 import './category.css'
 
@@ -62,7 +63,7 @@ export default function CategoryPage({ slug }) {
           </article>)}</div> : <p className="category-empty">{t('No products match these filters.')}</p>}
         </section>
       </div>
-      {compareOpen && <section className="category-compare"><div><h2>{t('Compare products')}</h2><button onClick={() => setCompareOpen(false)}>{t('Close')}</button></div>{compared.length ? <div className="compare-grid">{compared.map((product) => <article key={product.id}><img src={product.image} alt={product.name} /><h3>{product.name}</h3><p>{t(product.copy)}</p><a href={product.href}>{t('View product')}</a><button onClick={() => toggleCompare(product.id)}>{t('Remove')}</button></article>)}</div> : <p>{t('Select up to three products using Compare.')}</p>}</section>}
+      {compareOpen && <section className="category-compare"><div><h2>{t('Compare products')}</h2><div className="compare-actions">{compared.length > 1 && <a href={comparePath(compareIds)}>{t('Compare side by side')}</a>}<button onClick={() => setCompareOpen(false)}>{t('Close')}</button></div></div>{compared.length ? <div className="compare-grid">{compared.map((product) => <article key={product.id}><img src={product.image} alt={product.name} /><h3>{product.name}</h3><p>{t(product.copy)}</p><a href={product.href}>{t('View product')}</a><button onClick={() => toggleCompare(product.id)}>{t('Remove')}</button></article>)}</div> : <p>{t('Select up to three products using Compare.')}</p>}</section>}
     </main>
   )
 }

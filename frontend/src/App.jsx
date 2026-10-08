@@ -4,16 +4,24 @@ import Newsletter from './components/layout/Newsletter'
 import { CartProvider } from './context/CartContext'
 import { LocaleProvider } from './context/LocaleContext'
 import { findProduct, findProductBySku } from './data/products'
-import HomePage from './pages/HomePage'
+import CartPage from './pages/CartPage'
 import CategoryPage from './pages/CategoryPage'
+import ComparePage from './pages/ComparePage'
+import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import ProductPage from './pages/ProductPage'
+import SalesPromotionsPage from './pages/SalesPromotionsPage'
+import SearchPage from './pages/SearchPage'
 
 // Minimal path-based routing: "/" is home, "/p/:id" (or legacy "/products/:id") is a product page.
 function route(pathname) {
   const cleanPath = pathname.replace(/^\/(?:mn-MN|en-MN)(?=\/|$)/, '')
   const [section, id] = cleanPath.split('/').filter(Boolean)
   if (!section || section === 'index.html') return <HomePage />
+  if (section === 'cart') return <CartPage />
+  if (section === 'search') return <SearchPage />
+  if (section === 'compare') return <ComparePage />
+  if (section === 'sales-promotions') return <SalesPromotionsPage />
   if (section === 'c' && id) return <CategoryPage slug={id} />
   if ((section === 'p' || section === 'products') && id) {
     const product = findProduct(id) || findProductBySku(id)
