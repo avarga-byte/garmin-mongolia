@@ -158,3 +158,17 @@ Object.assign(mongolian, {
   'Valid until': 'Хүчинтэй хугацаа:',
   'No deals at the moment': 'Одоогоор урамшуулал байхгүй байна',
 })
+Object.assign(mongolian, {
+  'Strategies': 'Стратеги',
+  'Open in Google Maps': 'Google Maps дээр нээх',
+  'Email Address': 'И-мэйл хаяг',
+  'Organisation Name': 'Байгууллагын нэр',
+  'Order Quantity': 'Захиалах тоо',
+  'Products of interest': 'Сонирхож буй бүтээгдэхүүн',
+  'Send bulk enquiry': 'Хүсэлт илгээх',
+  'Your email app should open now. If it does not, email us directly at': 'И-мэйл программ нээгдэх ёстой. Нээгдэхгүй бол дараах хаягаар шууд бичнэ үү:',
+  'Blog categories': 'Блогийн ангилал',
+  'Search Blog': 'Блогоос хайх',
+  'No articles match your search.': 'Хайлтад тохирох нийтлэл олдсонгүй.',
+  'Garmin global blog': 'Garmin дэлхийн блог',
+})
