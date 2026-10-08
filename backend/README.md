@@ -11,6 +11,8 @@ Base path: `/api/v1`. JSON; locale is explicit (`en` or `mn`). Web routes follow
 - `GET /categories?locale=en|mn` → categories
 - `POST /cart/quote` → future commerce quote; currently returns `501 COMMERCE_PROVIDER_NOT_CONFIGURED`
 
-Product schema target: `{ id, sku, slug, name, summary, description, images[], price:{amount,currency}, availability, variants[], specs[], locale }`. Catalog remains the source of truth; cached frontend data is prototype fallback. Never use browser country header supplied directly by arbitrary clients for price, tax, or shipping decisions.
+Product schema target: `{ id, sku, slug, name, summary, description, images:[{url,alt,sortOrder}], price:{amount,currency}, availability, variants[], specifications:[{title,rows}], inTheBox[], maps[], accessories[], compatibleDevices[], frequentlyBoughtTogether[], supportResources:{manual,software,support}, locale }`. These fields drive the product page gallery, specifications, six detail tabs, support links, and product pairings. Empty lists mean catalog content is not configured; do not infer compatibility or bundle recommendations. Catalog remains the source of truth; cached frontend data is prototype fallback. Never use browser country header supplied directly by arbitrary clients for price, tax, or shipping decisions.
+
+Image upload is not enabled yet. Once admin authentication and storage are configured, add an authenticated multipart upload endpoint that validates image type and size and returns `{ url, alt }`; store the resulting URL in `images[]`. Do not store image bytes in product JSON or expose a public upload route.
 
 Current repo has no credentials, API contract, catalog endpoint, or commerce integration for the live geoshop website. Replace the marked adapter stubs only after the live site's API/auth and stock/price ownership are confirmed. `api.js` deliberately exposes shapes without pretending a provider is connected.

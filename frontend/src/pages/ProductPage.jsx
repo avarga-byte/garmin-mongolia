@@ -1,18 +1,19 @@
 import ProductGallery from '../components/product/ProductGallery'
 import PurchasePanel from '../components/product/PurchasePanel'
-import { BoxContents, Breadcrumbs, FeatureStories, ProductOverview, RelatedProducts, SectionTabs, SpecificationList, SupportResources } from '../components/product/ProductSections'
+import { BoxContents, Breadcrumbs, FeatureStories, ProductOverview, ProductDetailGroups, RelatedProducts, SectionTabs, SpecificationList, SupportResources } from '../components/product/ProductSections'
 import '../components/product/product.css'
-import { relatedProducts } from '../data/products'
 import { useLocale } from '../context/locale'
 
 export default function ProductPage({ product }) {
   const { t } = useLocale()
   const tabs = [
     { id: 'overview', label: t('Overview') },
-    product.stories.length > 0 && { id: 'features', label: t('Features') },
-    product.specifications.length > 0 && { id: 'specifications', label: t('Specifications tab') },
+    { id: 'specifications', label: t('Specifications tab') },
     { id: 'in-the-box', label: t('In the box') },
-  ].filter(Boolean)
+    { id: 'maps', label: t('Maps') },
+    { id: 'accessories', label: t('Accessories') },
+    { id: 'compatible-devices', label: t('Compatible devices') },
+  ]
 
   return (
     <main className="pdp">
@@ -25,9 +26,12 @@ export default function ProductPage({ product }) {
       <ProductOverview product={product} />
       <FeatureStories stories={product.stories} />
       <SpecificationList name={product.name} groups={product.specifications} />
-      <SupportResources product={product} />
-      <RelatedProducts products={relatedProducts(product.id)} />
       <BoxContents name={product.name} />
+      <ProductDetailGroups product={product} />
+      <div className="pdp-support-layout">
+        <SupportResources product={product} />
+        <RelatedProducts products={product.frequentlyBoughtTogether || []} title="Frequently bought together" />
+      </div>
     </main>
   )
 }

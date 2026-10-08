@@ -70,6 +70,22 @@ export function SpecificationList({ name, groups }) {
   )
 }
 
+export function ProductDetailGroups({ product }) {
+  const { t } = useLocale()
+  const groups = [
+    ['maps', 'Maps', product.maps, 'Map details are confirmed for each product and region.'],
+    ['accessories', 'Accessories', product.accessories, 'Contact us to check locally available accessories.'],
+    ['compatible-devices', 'Compatible devices', product.compatibleDevices, 'Contact us to confirm compatibility for your setup.'],
+  ]
+  return groups.map(([id, title, items, emptyMessage]) => (
+    <section id={id} className="product-detail-group" key={id}>
+      <div className="eyebrow dark">{t('PRODUCT DETAILS')}</div>
+      <h2>{t(title)}</h2>
+      {items?.length ? <ul>{items.map((item) => <li key={item.id || item.name}><a href={item.href || '#'}>{t(item.name)}{item.description && <span>{t(item.description)}</span>}</a></li>)}</ul> : <p>{t(emptyMessage)}</p>}
+    </section>
+  ))
+}
+
 export function SupportResources({ product }) {
   const { t } = useLocale()
   if (!product.sku) return null
@@ -88,13 +104,13 @@ export function SupportResources({ product }) {
   )
 }
 
-export function RelatedProducts({ products }) {
+export function RelatedProducts({ products, title = 'You may also like' }) {
   const { t } = useLocale()
   return (
     <section className="related-products">
-      <div className="eyebrow dark">{t('KEEP EXPLORING')}</div>
-      <h2>{t('You may also like')}</h2>
-      <div className="related-grid">
+      <div className="eyebrow dark">{t(title === 'Frequently bought together' ? 'PRODUCT PAIRINGS' : 'KEEP EXPLORING')}</div>
+      <h2>{t(title)}</h2>
+      {products.length ? <div className="related-grid">
         {products.map((item) => (
           <a className="related-card" href={item.href} key={item.id}>
             <img src={item.image} alt={item.name} />
@@ -103,7 +119,7 @@ export function RelatedProducts({ products }) {
             <b>{t('VIEW PRODUCT')} <ArrowRight /></b>
           </a>
         ))}
-      </div>
+      </div> : <p>{t('Product pairings will appear when confirmed in the catalog.')}</p>}
     </section>
   )
 }

@@ -92,4 +92,12 @@ Object.assign(mongolian, {
   "Улбар шар": "Orange"
 })
 
-Object.assign(mongolian, { 'Ask us about delivery': 'Хүргэлтийн нөхцөлийг лавлана уу', 'Ask us about returns': 'Буцаалтын нөхцөлийг лавлана уу', 'Ask us about warranty': 'Баталгааны нөхцөлийг лавлана уу' })
+Object.assign(mongolian, {
+  'Ask us about delivery': 'Хүргэлтийн нөхцөлийг лавлана уу', 'Ask us about returns': 'Буцаалтын нөхцөлийг лавлана уу', 'Ask us about warranty': 'Баталгааны нөхцөлийг лавлана уу',
+  'Compatible devices': 'Тохирох төхөөрөмж', 'PRODUCT DETAILS': 'БҮТЭЭГДЭХҮҮНИЙ ДЭЛГЭРЭНГҮЙ',
+  'Product pairings will appear when confirmed in the catalog.': 'Бүтээгдэхүүний хослол баталгаажмагц энд харагдана.',
+  'PRODUCT PAIRINGS': 'ХОСЛУУЛАН АВАХ БҮТЭЭГДЭХҮҮН',
+  'Contact us to check locally available accessories.': 'Монголд байгаа дагалдах хэрэгслийг лавлана уу.',
+  'Contact us to confirm compatibility for your setup.': 'Танд тохирох төхөөрөмжийг лавлана уу.',
+  'Map details are confirmed for each product and region.': 'Газрын зургийн мэдээллийг бүтээгдэхүүн, бүс бүрээр баталгаажуулна.',
+})

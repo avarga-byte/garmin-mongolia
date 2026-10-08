@@ -6,6 +6,15 @@ export const english = {
   'PRODUCT OVERVIEW': 'PRODUCT OVERVIEW', 'Made for your activities': 'Made for your activities', 'PRODUCT INFORMATION': 'PRODUCT INFORMATION', 'Specifications': 'Specifications', 'Explore features, technical details and compatibility information for': 'Explore features, technical details and compatibility information for', 'details': 'details', 'NEED A HAND?': 'NEED A HAND?', 'Support and resources': 'Support and resources', 'Get manuals, software updates and help for': 'Get manuals, software updates and help for', 'Owner’s manual': 'Owner’s manual', 'Software and updates': 'Software and updates', 'Product support': 'Product support', 'KEEP EXPLORING': 'KEEP EXPLORING', 'You may also like': 'You may also like', 'VIEW PRODUCT': 'VIEW PRODUCT', 'IN THE BOX': 'IN THE BOX', 'Everything you need to get started.': 'Everything you need to get started.', 'COLOR': 'COLOR', 'Carbon Gray': 'Carbon Gray', 'Olive Green': 'Olive Green', 'Orange': 'Orange', 'ADD TO CART': 'ADD TO CART', 'ADDED TO CART': 'ADDED TO CART', 'Charging/data cable': 'Charging/data cable', 'Documentation': 'Documentation', 'Copyright © Garmin storefront demo': 'Copyright © Garmin storefront demo', 'yes': 'yes',
 }
 Object.assign(english, {
+  "Compatible devices": "Compatible devices",
+  "PRODUCT DETAILS": "PRODUCT DETAILS",
+  "Product pairings will appear when confirmed in the catalog.": "Product pairings will appear when confirmed in the catalog.",
+  "PRODUCT PAIRINGS": "PRODUCT PAIRINGS",
+  "Maps": "Maps",
+  "Accessories": "Accessories",
+  "Contact us to check locally available accessories.": "Contact us to check locally available accessories.",
+  "Contact us to confirm compatibility for your setup.": "Contact us to confirm compatibility for your setup.",
+  "Map details are confirmed for each product and region.": "Map details are confirmed for each product and region.",
   "Нарны цэнэглэлттэй GPS ухаалаг цаг": "Solar-powered GPS smartwatch",
   "Олон төрлийн спортын GPS ухаалаг цаг": "Multisport GPS smartwatch",
   "Дэлгэцгүй ухаалаг бугуйвч": "Screenless smart band",

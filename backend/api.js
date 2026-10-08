@@ -18,7 +18,7 @@ router.get('/products', (req, res) => {
 router.get('/products/:id', (req, res) => {
   const id = skus[req.params.id] || req.params.id
   return productIds.includes(id)
-    ? res.json({ id, sku: Object.keys(skus).find((sku) => skus[sku] === id) || null, locale: locales.includes(req.query.locale) ? req.query.locale : 'en', source: 'catalog-integration-pending' })
+    ? res.json({ id, sku: Object.keys(skus).find((sku) => skus[sku] === id) || null, locale: locales.includes(req.query.locale) ? req.query.locale : 'en', images: [], specifications: [], inTheBox: [], maps: [], accessories: [], compatibleDevices: [], frequentlyBoughtTogether: [], supportResources: { manual: null, software: null, support: null }, source: 'catalog-integration-pending' })
     : res.status(404).json({ error: 'PRODUCT_NOT_FOUND' })
 })
 router.get('/categories', (_req, res) => res.json({ items: categories.map((id) => ({ id, href: `/c/${id}` })) }))
